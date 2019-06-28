@@ -1,0 +1,115 @@
+/* 引入微金所字体图标文件 */
+@import "./wjsfont.less";
+
+/* index页面样式 */
+.view {
+}
+
+/* 头部工具栏 */
+.topTool {
+    .row {
+        text-align: center;
+        > div {
+            height: 40px;
+            line-height: 40px;
+            border: 1px solid #000;
+            color: #808080;
+            a {
+                position: relative;
+                color: inherit;
+                > img {
+                    display: none;
+                    position: absolute;
+                    left: -5px;
+                    top: 15px;
+                }
+                &:hover {
+                    > img {
+                        display: block;
+                    }
+                }
+            }
+        }
+    }
+}
+
+/* 导航 */
+.index_nav {
+    > .navbar {
+        /* 清除与下面轮播图的间距 */
+        margin-bottom: 0;
+    }
+    .container {
+        a {
+            height: 80px;
+            line-height: 80px;
+            padding-top: 0;
+            padding-bottom: 0;
+            &:hover,
+            &:focus {
+                border-bottom: 1px solid red;
+            }
+        }
+        .navbar-brand {
+            &:hover {
+                border-bottom: none;
+            }
+            span {
+                font-size: 70px;
+                padding: 5px;
+            }
+            .wjsfont-logo {
+                color: red;
+            }
+        }
+    }
+}
+
+/* 轮播图 */
+.wjs_carousel {
+}
+
+/* 交易保障 */
+.exchange {
+    margin: 50px 0; 
+    a {
+        color: #808080;
+        &:hover {
+            color: red;
+        }
+        .media {
+            margin-top: 20px;
+            .media-left {
+                .wjsfont {
+                    font-size: 40px;
+                }
+            }
+            .media-body {
+                h4 {
+                    font-size: 22px;
+                }
+            }
+        }
+    }
+}
+
+/* 排队 */
+.queue {
+    border-top: 1px solid #000;
+    border-bottom: 1px solid #000;
+    .row {
+        >div {
+            height: 80px;
+            line-height: 80px;
+            a {
+                color: red;
+                border-bottom: 1px dashed red;
+            }
+        }
+    }
+}
+
+/* 微投资 */
+.investment {
+    
+}

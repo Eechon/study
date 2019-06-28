@@ -1,0 +1,267 @@
+/* 导入初始化样式文件 */
+@import "./base.less";
+
+/* index页面样式 */
+
+/* 公共样式 */
+
+/* 广告模块0 */
+.adv0 {
+}
+/* 广告模块1 */
+.adv1 {
+    padding: 10px;
+    img {
+        border-radius: 15px;
+    }
+}
+
+.view {
+}
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: orange;
+    color: #fff;
+    z-index: 9;
+    .sort {
+        width: 50px;
+        font-size: 12px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        > img {
+            width: 22px;
+            height: 35px;
+        }
+    }
+    .search {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+        padding: 5px 0;
+        > input {
+            width: 100%;
+            height: 100%;
+            text-indent: 25px;
+            border-radius: 15px;
+        }
+    }
+    .login {
+        width: 50px;
+        font-size: 14px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+/* 轮播图 */
+.slider {
+    margin-top: 40px;
+}
+
+/* 苏宁导航 */
+nav {
+    a {
+        float: left;
+        width: 20%;
+        text-align: center;
+        > img {
+            width: 50%;
+            margin: 0 auto;
+        }
+        span {
+            font-size: 12rem/32;
+        }
+    }
+}
+
+/* 热卖模块 */
+.hot_sell {
+    background-color: #2d15d0;
+    > a {
+        float: left;
+        &:nth-child(-n + 4) {
+            width: 50%;
+        }
+        &:nth-child(3) {
+            clear: both;
+        }
+        &:nth-last-child(-n + 4) {
+            width: 25%;
+            position: relative;
+            .hs_desc {
+                position: absolute;
+                top: 0;
+                left: 0;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-around;
+                align-items: center;
+                height: 100%;
+                text-align: center;
+                color: #fff;
+                > img {
+                    width: 70%;
+                }
+                > p {
+                    font-size: 12rem/32;
+                }
+            }
+        }
+        &:nth-child(5) {
+            clear: both;
+        }
+    }
+}
+
+/* 每日必逛 */
+/* shopping模块模版 */
+.shopping {
+    background-color: #f2f2f2;
+    .shop_title {
+    }
+    .shop_content {
+        display: flex;
+        flex-wrap: wrap;
+        margin: 5px;
+        border-radius: 5px;
+        background-color: #fff;
+        a {
+            width: 50%;
+            padding: 5px;
+            &:nth-child(2n) {
+                border-left: 1px solid #ccc;
+            }
+            &:nth-child(-n + 2) {
+                border-bottom: 1px solid #ccc;
+            }
+            > h4 {
+                font-size: 14rem/32;
+                font-weight: normal;
+            }
+            > p {
+                font-size: 12rem/32;
+            }
+            .img_wrap {
+                display: flex;
+                > img {
+                    // flex: 1;
+                    width: 50%;
+                    height: 50%;
+                }
+            }
+        }
+    }
+}
+
+/* 酷玩潮流 */
+// 使用了shopping模版
+.fashion {
+    .fashion_special {
+        font-size: 14rem/32;
+        color: #fff;
+        background: url(../images/fs00.jpg) no-repeat;
+        background-size: 100% 100%;
+    }
+    .shop_content {
+        a:nth-child(-n + 4) {
+            border-bottom: 1px solid #ccc;
+        }
+    }
+}
+
+/* 生活风尚 */
+.life_style {
+    .shop_content {
+        a:nth-last-child(-n + 4) {
+            width: 25%;
+            border-top: 1px solid #ccc;
+            border-left: 1px solid #ccc;
+        }
+        a:nth-last-child(4) {
+            border-left: none;
+        }
+    }
+}
+
+/* 猜你喜欢 */
+.guess_like {
+    background-color: #f2f2f2;
+    .guess_title {
+    }
+    .guess_content {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        padding: 5px;
+        a {
+            width: 48%;
+            background-color: #fff;
+            // margin: 5px;
+            // margin是会算成是盒子外面的东西。所以不能用
+            padding: 5px;
+            border-radius: 5px;
+            margin-bottom: 5px;
+            > img {
+            }
+            > p {
+                // 将对象作为弹性盒模型显示
+                display: -webkit-box;
+                -webkit-box-orient: vertical;
+                -webkit-line-clamp: 2;
+
+                font-size: 12rem/32;
+
+                // 字体溢出省略号显示
+                white-space: normal;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+            > span {
+                color: red;
+                font-size: 10rem/32;
+            }
+        }
+    }
+}
+
+/* 底部模块 */
+footer {
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 45px;
+    background-color: #fff;
+    z-index: 9;
+    a {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        font-size: 14px;
+        > img {
+            width: 25px;
+            height: 25px;
+        }
+    }
+}
+
+/* 测试用box */
+.box {
+    width: 100%;
+    height: 45px;
+    background-color: #fff;
+}

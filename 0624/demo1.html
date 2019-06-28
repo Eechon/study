@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>元奭</title>
+    </head>
+    <body></body>
+    <script>
+        while (true) {
+            // 获取用户数据
+            var msg = prompt(
+                "你好，我是小娜，请输入 \n" +
+                    "1.求和 \n" +
+                    "2.获取时间 \n" +
+                    "3.讲个笑话 \n" +
+                    "输入q退出和小娜聊天"
+            );
+
+            // 判断是否要退出
+            if (msg === "q") {
+                alert("你要离开小娜了吗？");
+                break;
+            } else if (msg === "1") {
+                // 选择1时，求和
+                var str = prompt(
+                    "请输入你要求和的数字，用逗号隔开，例如：1,2,3,4 "
+                );
+                var arr = str.split(",");
+                var sum = 0;
+                for(var i=0;i<arr.length;i++){
+                    sum +=parseFloat(arr[i]);
+                }
+                alert("数字的和是：" + sum);
+
+            } else if (msg === "2") {
+                // 选择2时，获取时间
+                // 创建变量记录当前时间
+                var date = new Date;
+                // 获取年月日时分秒
+                var year = date.getFullYear();
+                var month = date.getMonth() + 1; //getMonth获取的是[0,11]的数，所以要加1
+                var day = date.getDate();
+                var hour = date.getHours();
+                var minute =date.getMinutes();
+                var second = date.getSeconds();
+                // 统一格式，没有两位的补上0
+                if(month < 10) month = "0" + month;
+                if(day < 10) day = "0" + day;
+                if(hour < 10) hour = "0" + hour;
+                if(minute < 10) minute = "0" + minute;
+                if(second < 10) second = "0" + second;
+                // 把时间拼接在一起
+                time = year + "-" + month + "-" + day + " " + hour + ":" + minute + ":" + second;
+                alert("当前时间：" + time);
+                
+            } else if (msg === "3") {
+                // 选择3时，讲笑话
+                var joke = [
+                    "笑话1",
+                    "笑话2",
+                    "笑话3",
+                    "笑话4",
+                    "笑话5",
+                    "笑话6",
+                    "笑话7",
+                ];
+                var r = Math.floor(Math.random() * joke.length);
+                alert(joke[r]);
+            } else {
+                //输入其他时，小娜不懂
+                alert("你输入的话，我还不懂，请再输入一次");
+            }
+        } /* end while */
+    </script>
+</html>

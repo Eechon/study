@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>元奭</title>
+    </head>
+    <body>
+        <input type="button" value="随机颜色" id="rdColor" />
+    </body>
+    <script>
+        function randomInt(n, m) {
+            return Math.floor(Math.random() * (m - n + 1) + n);
+        }
+        function randomColor() {
+            var r = randomInt(0, 255);
+            var g = randomInt(0, 255);
+            var b = randomInt(0, 255);
+            var a = randomInt(0,10)/10;
+            //rgba(r,g,b,a);
+            return "rgba(" + r + "," + g + "," + b +","+a+")";
+            //  return "linear-gradient(rgba(0,0,0,0.5),rgba(112,53,233,0.5))";
+            // background-image: linear-gradient(to right, #ff6b7d, #ff84d2);
+        }
+        var btn = document.getElementById("rdColor");
+        btn.onclick = function() {
+            // document.body.style.backgroundColor = randomColor();
+            // document.body.style.backgroundImage = linear-gradient(randomColor(),randomColor());
+            document.body.style.backgroundImage = "linear-gradient(45deg,"+randomColor()+","+randomColor()+")";
+        };
+    </script>
+</html>

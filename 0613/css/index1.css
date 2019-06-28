@@ -1,0 +1,71 @@
+/* 引入初始化文件 */
+/* 初始化样式文件 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+ul {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+}
+/* index1页面样式 */
+.box {
+  max-width: 540px;
+  min-width: 320px;
+  margin: 0 auto;
+}
+/* 头部模块开始 */
+.cate {
+  display: flex;
+  height: 90px;
+  background-color: #fa7f50;
+  border-radius: 5px;
+  margin: 5px 0;
+  font-size: 14px;
+  color: #fff;
+}
+.cate .main_menu {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+.cate .main_menu span:last-child {
+  width: 43px;
+  height: 43px;
+  background: url('../images/xc_sprites.png') no-repeat 0 -130px;
+  background-size: 104px 327.5px;
+}
+.cate .tab_menu {
+  flex: 2;
+  display: flex;
+  flex-wrap: wrap;
+}
+.cate .tab_menu a {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-left: 1px solid #fff;
+}
+.cate .tab_menu a:nth-child(-n+2) {
+  border-bottom: 1px solid #fff;
+}
+.cate.ticket {
+  background-color: #3d98ff;
+}
+.cate.ticket .main_menu span:last-child {
+  background-position: left bottom;
+}
+.cate.travel {
+  background-color: #44c522;
+}
+.cate.travel .main_menu span:last-child {
+  background-position: 0 -240px;
+}
+/* 头部模块结束 */

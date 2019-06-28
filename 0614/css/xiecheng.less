@@ -1,0 +1,244 @@
+@import "./base.less";
+
+/* xiecheng页面样式 */
+
+/* 页面公共样式 */
+
+/* view样式 */
+.view {
+    max-width: 540px;
+    min-width: 320px;
+    margin: 0 auto;
+}
+
+/* 头部样式开始 */
+.top_menu {
+    .cate {
+        display: flex;
+        margin: 5px 0;
+        border-radius: 5px;
+        background-color: #fa7f50;
+        color: #fff;
+        height: 90px;
+        .main_menu {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+            span:last-child {
+                width: 48px;
+                height: 48px;
+                background: url(../images/xc_sprites.png) no-repeat 0 -260px/2;
+                background-size: 208px/2 655px/2;
+            }
+        }
+        .tab_menu {
+            flex: 2;
+            display: flex;
+            flex-wrap: wrap;
+            > a {
+                width: 50%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border-left: 1px solid #fff;
+                &:nth-child(-n + 2) {
+                    border-bottom: 1px solid #fff;
+                }
+            }
+        }
+        &.ticket {
+            background-color: #3d98ff;
+            .main_menu {
+                a {
+                    span:last-child {
+                        background-position: left bottom;
+                    }
+                }
+            }
+        }
+        &.travel {
+            background-color: #44c522;
+            .main_menu {
+                a {
+                    span:last-child {
+                        background-position: 0 -480px/2;
+                    }
+                }
+            }
+        }
+    }
+}
+/* 头部样式结束 */
+
+/* 头部导航模块开始 */
+.top_nav {
+    display: flex;
+    flex-wrap: wrap;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-top: 5px;
+    padding: 5px 0;
+    > a {
+        width: 20%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        span:first-child {
+            width: 28px;
+            height: 28px;
+            background: url(../images/un_ico_subnav_v7.124@2x.png) no-repeat 0
+                6px;
+            background-size: 48px/2 600px/2;
+        }
+    }
+}
+/* 头部导航模块结束 */
+
+/* 特卖模块开始 */
+.hot_sell {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-top: 5px;
+    padding: 5px;
+    .sell_title {
+        display: flex;
+        justify-content: space-between;
+        > h4 {
+            font-style: italic;
+            font-size: 16px;
+            color: #fd3c52;
+        }
+        > a {
+            font-size: 12px;
+            color: #fff;
+            background-color: #ff6c80;
+            padding: 2px 8px;
+            border-radius: 15px;
+        }
+    }
+    .sell_content {
+        margin-top: 5px;
+        display: flex;
+        .sell_left {
+            flex: 1;
+            > img {
+                width: 100%;
+            }
+            > p {
+                font-size: 14px;
+                height: 40px;
+                overflow: hidden;
+                margin-top: 5px;
+            }
+            .price {
+                margin-top: 5px;
+                display: flex;
+                span:first-child {
+                    font-size: 14px;
+                    color: #fe4f5e;
+                }
+                span:last-child {
+                    color: #fff;
+                    background-color: #fd3a51;
+                    border-radius: 15px;
+                    font-size: 12px;
+                    padding: 1px 5px;
+                    margin-left: 5px;
+                }
+            }
+        }
+        .sell_right {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            background-color: #ddd;
+            .special_sell {
+                flex: 1;
+                background: url(../images/pic-tmh-02.png) no-repeat right bottom;
+                background-size: 107px/2 142px/2;
+                border-bottom: 5px solid #fff;
+                > h5 {
+                    color: #fd3a51;
+                    font-size: 14px;
+                }
+                > span {
+                    font-size: 12px;
+                }
+            }
+            .sell_product {
+                flex: 1;
+                display: flex;
+                .product {
+                    flex: 1;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                    border-left: 5px solid #fff;
+                    font-size: 14px;
+                    > img {
+                        width: 99px/2;
+                        height: 70px/2;
+                    }
+                }
+            }
+        }
+    }
+}
+/* 特卖模块结束 */
+
+/* 热门活动开始 */
+.hot_active {
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    .active_title {
+        display: flex;
+        justify-content: space-between;
+        > h4 {
+            font-size: 16px;
+            color: orange;
+            font-style: italic;
+        }
+        > a {
+            font-size: 12px;
+            padding: 2px 10px;
+            border-radius: 15px;
+            background-color: #ff6c80;
+            color: #fff;
+        }
+    }
+    .active_content {
+        display: flex;
+        flex-wrap: wrap;
+        > a {
+            width: 50%;
+        }
+    }
+}
+/* 热门活动结束 */
+
+/* 底部模块开始 */
+footer {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    text-align: center;
+    .footer_nav {
+        display: flex;
+        > a {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+        }
+    }
+}
+/* 底部模块结束 */

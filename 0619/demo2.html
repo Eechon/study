@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        @keyframes fengche {
+            0% {
+
+            }
+            100% {
+                /* rotate: 360deg; */
+                transform: rotate(360deg);
+            }
+        }
+
+        .box {
+            margin: 100px auto;
+        }
+        .box img {
+            animation-name: fengche;
+            animation-duration:3s;
+            animation-iteration-count:infinite;
+            animation-timing-function:linear;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <img src="./images/fc.png" alt="">
+    </div>
+</body>
+</html>

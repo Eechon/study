@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>元奭</title>
+    </head>
+    <body>
+        <!-- 预解析 -->
+        <script>
+            // 下面输出的结果是什么
+            var a = 18;
+            f1();
+            function f1() {
+                var b = 9;
+                console.log(a);// undefind
+                console.log(b);// 9
+                var a = "123";
+            }
+            //下面输出的结果是什么
+            f1();
+            console.log(c);//un
+            console.log(b);//un
+            console.log(a);//18
+            function f1() {
+                var a = (b = c = 9);
+                console.log(a);//9
+                console.log(b);//9
+                console.log(c);//
+            }
+
+            /* 
+                var a;
+                func f1
+                func f1 {
+                    var a b c 
+                    a =9
+                    b =9
+                    c =9
+                }
+                a = 18;
+                con c
+                con b
+                con a
+            */
+
+            /* 
+                单单第一段的才是这样，下面要结合在一起玩啊
+                var a
+                function f1() {
+                    var b;
+                    var a;
+                    b = 9;
+                    con                        undefind
+                    con                       9
+                    a ="123";
+                }
+                a = 18;
+                f1();
+             */
+        </script>
+    </body>
+</html>

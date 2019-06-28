@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>元奭</title>
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+            }
+            .box {
+                background: url("./images/phone.jpg") no-repeat;
+                width: 1226px;
+                height: 460px;
+                position: relative;
+                margin: 0 auto;
+            }
+            .arrow_l {
+                background: url("./images/icon-slides.png") no-repeat;
+                width: 41px;
+                height: 69px;
+                background-position: -85px 0;
+                position: absolute;
+                left: 0;
+                top: 50%;
+                margin-top: -35px;
+            }
+            .arrow_r {
+                background: url("./images/icon-slides.png") no-repeat;
+                width: 41px;
+                height: 69px;
+                background-position: -122px 0;
+                position: absolute;
+                right: 0;
+                top: 50%;
+                margin-top: -35px;
+            }
+            .arrow_l:hover {
+                background-position: 0 0;
+            }
+            .arrow_r:hover {
+                background-position: -42px 0;
+            }
+            .circle {
+                position: absolute;
+                left: 50%;
+                margin-left: -50px;
+                bottom: 5px;
+                background-color: #666666;
+                width: 100px;
+                height: 20px;
+                border-radius: 10px;
+
+                line-height: 20px;
+                text-align: center;
+            }
+            .circle ul {
+                list-style: none;
+            }
+            .circle li {
+                /* float: left; */
+                /*感觉line-block更加好做一点 */
+                display: inline-block;
+                width: 8px;
+                height: 8px;
+                border-radius: 50%;
+                background-color: skyblue;
+                /* margin: 6px 6px; */
+                margin: 2px 2px;
+            }
+            .circle li:hover {
+                background-color: pink;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="box">
+            <div class="arrow_l"></div>
+            <div class="arrow_r"></div>
+            <div class="circle">
+                <ul>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+            </div>
+        </div>
+    </body>
+</html>

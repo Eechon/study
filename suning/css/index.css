@@ -1,0 +1,267 @@
+/* 导入初始化样式文件 */
+/* 初始化样式文件 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+ul {
+  list-style: none;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+  /* 使a标签能和内容一样大 */
+  display: block;
+  /* 取消a标签高亮显示 */
+  -webkit-tap-highlight-color: transparent;
+}
+input {
+  outline: none;
+  border: none;
+}
+img {
+  width: 100%;
+  /* 去除图片底部3px的间距 */
+  display: block;
+}
+.clearfix:after {
+  content: '';
+  display: block;
+  clear: both;
+  height: 0;
+  line-height: 0;
+  visibility: hidden;
+}
+/* .clearfix::before,
+.clearfix::after {
+    content: '';
+    display: table;
+    line-height: 0; 
+}
+.clearfix:after {
+    clear: both;
+} */
+/* index页面样式 */
+/* 公共样式 */
+/* 广告模块0 */
+/* 广告模块1 */
+.adv1 {
+  padding: 10px;
+}
+.adv1 img {
+  border-radius: 15px;
+}
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: orange;
+  color: #fff;
+  z-index: 9;
+}
+header .sort {
+  width: 50px;
+  font-size: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+header .sort > img {
+  width: 22px;
+  height: 35px;
+}
+header .search {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  padding: 5px 0;
+}
+header .search > input {
+  width: 100%;
+  height: 100%;
+  text-indent: 25px;
+  border-radius: 15px;
+}
+header .login {
+  width: 50px;
+  font-size: 14px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+/* 轮播图 */
+.slider {
+  margin-top: 40px;
+}
+/* 苏宁导航 */
+nav a {
+  float: left;
+  width: 20%;
+  text-align: center;
+}
+nav a > img {
+  width: 50%;
+  margin: 0 auto;
+}
+nav a span {
+  font-size: 0.375rem;
+}
+/* 热卖模块 */
+.hot_sell {
+  background-color: #2d15d0;
+}
+.hot_sell > a {
+  float: left;
+}
+.hot_sell > a:nth-child(-n + 4) {
+  width: 50%;
+}
+.hot_sell > a:nth-child(3) {
+  clear: both;
+}
+.hot_sell > a:nth-last-child(-n + 4) {
+  width: 25%;
+  position: relative;
+}
+.hot_sell > a:nth-last-child(-n + 4) .hs_desc {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  height: 100%;
+  text-align: center;
+  color: #fff;
+}
+.hot_sell > a:nth-last-child(-n + 4) .hs_desc > img {
+  width: 70%;
+}
+.hot_sell > a:nth-last-child(-n + 4) .hs_desc > p {
+  font-size: 0.375rem;
+}
+.hot_sell > a:nth-child(5) {
+  clear: both;
+}
+/* 每日必逛 */
+/* shopping模块模版 */
+.shopping {
+  background-color: #f2f2f2;
+}
+.shopping .shop_content {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 5px;
+  border-radius: 5px;
+  background-color: #fff;
+}
+.shopping .shop_content a {
+  width: 50%;
+  padding: 5px;
+}
+.shopping .shop_content a:nth-child(2n) {
+  border-left: 1px solid #ccc;
+}
+.shopping .shop_content a:nth-child(-n + 2) {
+  border-bottom: 1px solid #ccc;
+}
+.shopping .shop_content a > h4 {
+  font-size: 0.4375rem;
+  font-weight: normal;
+}
+.shopping .shop_content a > p {
+  font-size: 0.375rem;
+}
+.shopping .shop_content a .img_wrap {
+  display: flex;
+}
+.shopping .shop_content a .img_wrap > img {
+  width: 50%;
+  height: 50%;
+}
+/* 酷玩潮流 */
+.fashion .fashion_special {
+  font-size: 0.4375rem;
+  color: #fff;
+  background: url(../images/fs00.jpg) no-repeat;
+  background-size: 100% 100%;
+}
+.fashion .shop_content a:nth-child(-n + 4) {
+  border-bottom: 1px solid #ccc;
+}
+/* 生活风尚 */
+.life_style .shop_content a:nth-last-child(-n + 4) {
+  width: 25%;
+  border-top: 1px solid #ccc;
+  border-left: 1px solid #ccc;
+}
+.life_style .shop_content a:nth-last-child(4) {
+  border-left: none;
+}
+/* 猜你喜欢 */
+.guess_like {
+  background-color: #f2f2f2;
+}
+.guess_like .guess_content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding: 5px;
+}
+.guess_like .guess_content a {
+  width: 48%;
+  background-color: #fff;
+  padding: 5px;
+  border-radius: 5px;
+  margin-bottom: 5px;
+}
+.guess_like .guess_content a > p {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  font-size: 0.375rem;
+  white-space: normal;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.guess_like .guess_content a > span {
+  color: red;
+  font-size: 0.3125rem;
+}
+/* 底部模块 */
+footer {
+  display: flex;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 45px;
+  background-color: #fff;
+  z-index: 9;
+}
+footer a {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 14px;
+}
+footer a > img {
+  width: 25px;
+  height: 25px;
+}
+/* 测试用box */
+.box {
+  width: 100%;
+  height: 45px;
+  background-color: #fff;
+}

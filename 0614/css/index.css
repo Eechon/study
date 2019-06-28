@@ -1,0 +1,253 @@
+/* 引入初始化文件 */
+/* 初始化样式文件 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+ul {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+}
+img {
+  width: 100%;
+  /* 原来的img默认与下边距有3px的距离，通过变为block来处理 */
+  display: block;
+}
+/* index1页面样式 */
+.box {
+  max-width: 540px;
+  min-width: 320px;
+  margin: 0 auto;
+}
+/* 头部模块开始 */
+.cate {
+  display: flex;
+  height: 90px;
+  background-color: #fa7f50;
+  border-radius: 5px;
+  margin: 5px 0;
+  font-size: 14px;
+  color: #fff;
+}
+.cate .main_menu {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+.cate .main_menu span:last-child {
+  width: 43px;
+  height: 43px;
+  background: url('../images/xc_sprites.png') no-repeat 0 -130px;
+  background-size: 104px 327.5px;
+}
+.cate .tab_menu {
+  flex: 2;
+  display: flex;
+  flex-wrap: wrap;
+}
+.cate .tab_menu a {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-left: 1px solid #fff;
+}
+.cate .tab_menu a:nth-child(-n+2) {
+  border-bottom: 1px solid #fff;
+}
+.cate.ticket {
+  background-color: #3d98ff;
+}
+.cate.ticket .main_menu span:last-child {
+  background-position: left bottom;
+}
+.cate.travel {
+  background-color: #44c522;
+}
+.cate.travel .main_menu span:last-child {
+  background-position: 0 -240px;
+}
+/* 头部模块结束 */
+/* 携程导航模块开始 */
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 12px;
+}
+nav > a {
+  display: flex;
+  width: 20%;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  margin: 5px 0;
+}
+nav > a span:first-child {
+  width: 28px;
+  height: 28px;
+  background: url('../images/un_ico_subnav_v7.124@2x.png') no-repeat 0 5px;
+  background-size: 24px 300px;
+}
+nav > a:nth-child(2) span:first-child {
+  background-position: 4px -21px;
+}
+nav > a:nth-child(3) span:first-child {
+  background-position: 4px -50px;
+}
+/* 携程导航模块结束 */
+/* 特卖会模块开始 */
+.hot_sell {
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 5px;
+}
+.hot_sell .sell_title {
+  display: flex;
+  justify-content: space-between;
+}
+.hot_sell .sell_title > h4 {
+  font-size: 16px;
+  color: #fd3c52;
+  font-style: italic;
+}
+.hot_sell .sell_title > a {
+  background-color: #ff6b7d;
+  border-radius: 15px;
+  font-size: 12px;
+  color: #fff;
+  padding: 2px 8px;
+}
+.hot_sell .sell_content {
+  display: flex;
+  padding: 5px 0;
+}
+.hot_sell .sell_content .sell_left {
+  flex: 1;
+}
+.hot_sell .sell_content .sell_left img {
+  width: 100%;
+}
+.hot_sell .sell_content .sell_left p {
+  font-size: 14px;
+  overflow: hidden;
+  height: 40px;
+  text-align: justify;
+}
+.hot_sell .sell_content .sell_left .sell_price {
+  display: flex;
+}
+.hot_sell .sell_content .sell_left .sell_price .new_price {
+  color: #fe4f5e;
+}
+.hot_sell .sell_content .sell_left .sell_price .old_price {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  background-color: #fd3a51;
+  border-radius: 10px;
+  padding: 0 5px;
+  margin-left: 10px;
+  font-size: 12px;
+}
+.hot_sell .sell_content .sell_right {
+  flex: 1;
+}
+.hot_sell .sell_content .sell_right .special_price {
+  height: 50%;
+  background: url(../images/pic-tmh-02.png) no-repeat right bottom, #f9f9f9;
+  background-size: 53.5px 71px;
+  padding: 5px 0 0 10px;
+  border-bottom: 5px solid #fff;
+}
+.hot_sell .sell_content .sell_right .special_price a {
+  color: #fd3a51;
+  font-size: 14px;
+}
+.hot_sell .sell_content .sell_right .special_price p {
+  font-size: 12px;
+}
+.hot_sell .sell_content .sell_right .travel_product {
+  height: 50%;
+  display: flex;
+  background-color: #f9f9f9;
+}
+.hot_sell .sell_content .sell_right .travel_product .product {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-left: 5px solid #fff;
+}
+.hot_sell .sell_content .sell_right .travel_product .product h4 {
+  font-size: 14px;
+}
+.hot_sell .sell_content .sell_right .travel_product .product span {
+  font-size: 12px;
+}
+.hot_sell .sell_content .sell_right .travel_product .product img {
+  margin-top: 10px;
+  width: 49.5px;
+  height: 35px;
+}
+/* 特卖会模块结束 */
+/* 热门活动模块开始 */
+.hot_active {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+  margin-top: 5px;
+  padding: 5px;
+}
+.hot_active .active_title {
+  display: flex;
+  justify-content: space-between;
+}
+.hot_active .active_title > h4 {
+  font-size: 14px;
+  color: orange;
+}
+.hot_active .active_title > a {
+  font-size: 12px;
+  color: #fff;
+  padding: 2px 8px;
+  background-color: #ff6b7d;
+  border-radius: 15px;
+}
+.hot_active .active_content {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 5px;
+}
+.hot_active .active_content > a {
+  width: 50%;
+}
+/* 热门活动模块结束 */
+/* 底部模块开始 */
+footer {
+  border: 1px solid #ccc;
+  margin-top: 5px;
+  border-radius: 5px;
+  text-align: center;
+}
+footer .nav {
+  display: flex;
+}
+footer .nav > a {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+/* 底部模块结束 */

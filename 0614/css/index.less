@@ -1,0 +1,264 @@
+/* 引入初始化文件 */
+@import './base.less';
+
+/* index1页面样式 */
+.box {
+    max-width: 540px;
+    min-width: 320px;
+    margin: 0 auto;
+}
+
+/* 头部模块开始 */
+.cate {
+    display: flex;
+    height: 90px;
+    background-color: #fa7f50;
+    border-radius: 5px;
+    margin: 5px 0;
+    font-size: 14px;
+    color: #fff;
+    .main_menu {
+        flex:1;
+        display: flex;
+        // 改主轴为竖轴
+        flex-direction: column;
+        // 主轴方向均分
+        justify-content: space-around;
+        // 侧轴方向居中
+        align-items:center;
+        span:last-child {
+            width: 43px;
+            height: 43px;
+            background: url('../images/xc_sprites.png') no-repeat 0 -260px/2;
+            background-size: 208px/2 655px/2;
+        }
+    }
+    .tab_menu {
+        flex:2;
+        display: flex;
+        // 子元素换行
+        flex-wrap: wrap;
+        // 主轴侧轴方向居中
+        // justify-content: center;
+        // align-items: center;
+        // 它的子元素是a，不是a中的文字
+        a {
+            width: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-left: 1px solid #fff;
+            &:nth-child(-n+2) {
+                border-bottom: 1px solid #fff;
+            }
+        }
+    }
+
+    &.ticket {
+        background-color: #3d98ff;
+        .main_menu {
+            span:last-child {
+                background-position: left bottom;
+            }
+        }
+    }
+    &.travel {
+        background-color: #44c522;
+        .main_menu {
+            span:last-child {
+                background-position: 0 -480px/2;
+            }
+        }
+    }
+
+}
+
+/* 头部模块结束 */
+
+/* 携程导航模块开始 */
+nav {
+    display: flex;
+    flex-wrap: wrap;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 12px;
+    >a {
+        display: flex;
+        width: 20%;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        margin: 5px 0;
+        span:first-child {
+            width: 28px;
+            height: 28px;
+            background: url('../images/un_ico_subnav_v7.124@2x.png') no-repeat 0 10px/2;
+            background-size: 48px/2 600px/2;
+        }
+        &:nth-child(2){
+            span:first-child {
+                background-position: 8px/2 -42px/2;
+            }
+        }
+        &:nth-child(3){
+            span:first-child {
+                background-position: 8px/2 -100px/2;
+            }
+        }
+    }
+}
+/* 携程导航模块结束 */
+
+/* 特卖会模块开始 */
+.hot_sell {
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 5px;
+    .sell_title {
+        display: flex;
+        justify-content: space-between;
+        >h4{
+            font-size: 16px;
+            color: #fd3c52;
+            font-style: italic;
+        }
+        >a {
+            background-color: #ff6b7d;
+            border-radius: 15px;
+            font-size: 12px;
+            color: #fff;
+            padding: 2px 8px;
+        }
+    }
+    .sell_content {
+        display: flex;
+        padding: 5px 0;
+        .sell_left {
+            flex: 1;
+            img {
+                width: 100%;
+            }
+            p {
+                font-size: 14px;
+                overflow: hidden;
+                height: 40px;
+                text-align: justify;
+            }
+            .sell_price{
+                display: flex;
+                .new_price {
+                    color: #fe4f5e;
+                }
+                .old_price {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    color: #fff;
+                    background-color: #fd3a51;
+                    border-radius: 10px;
+                    padding: 0 5px;
+                    margin-left: 10px;
+                    font-size: 12px;
+                }
+            }
+        }
+        .sell_right {
+            flex: 1;
+            .special_price {
+                height: 50%;
+                background: url(../images/pic-tmh-02.png) no-repeat right bottom,#f9f9f9;
+                background-size: 107px/2 142px/2;
+                padding: 5px 0 0 10px;
+                border-bottom: 5px solid #fff;
+                a{
+                    color: #fd3a51;
+                    font-size: 14px;
+                }
+                p{
+                    font-size: 12px;
+                }
+            }
+            .travel_product {
+                height: 50%;
+                display: flex;
+                background-color: #f9f9f9;
+                .product {
+                    flex: 1;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                    border-left: 5px solid #fff;
+                    h4 {
+                        font-size: 14px;
+                    }
+                    span {
+                        font-size: 12px;
+                    }
+                    img {
+                        margin-top: 10px;
+                        width: 99px/2;
+                        height: 70px/2;
+                    }
+                }
+            }
+        }
+    }
+}
+/* 特卖会模块结束 */
+
+/* 热门活动模块开始 */
+.hot_active {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+    margin-top: 5px;
+    padding: 5px;
+    .active_title {
+        display: flex;
+        justify-content: space-between;
+        // padding: 5px 0;
+        >h4 {
+            font-size: 14px;
+            color:orange;
+        }
+        >a{
+            font-size: 12px;
+            color: #fff;
+            padding: 2px 8px;
+            background-color: #ff6b7d;
+            border-radius: 15px;
+        }
+    }
+    .active_content {
+        display: flex;
+        flex-wrap: wrap;
+        padding: 5px;
+        >a {
+            width: 50%;
+        }
+    }
+}
+/* 热门活动模块结束 */
+
+/* 底部模块开始 */
+footer {
+    border: 1px solid #ccc;
+    margin-top: 5px;
+    border-radius: 5px;
+    text-align: center;
+    .nav {
+        display: flex;
+
+        >a {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            // font-size: 14px;
+        }
+    }
+}
+/* 底部模块结束 */

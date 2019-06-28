@@ -1,0 +1,64 @@
+.box{
+    width:1920px;
+    height: 2000px;
+    background-color: #f3f5f7;
+}
+/* nav begin */
+.nav{
+    /* position:fixed定位相当于absolute，不过其定位标准是视窗本身 */
+    /* 不确定高度暂时不设置垂直居中 */
+    position:fixed;
+    left:5px;
+    top:160px;
+/*     top:50%;
+    margin-top:-210px;     */
+    width:175px;
+    /* height: 420px; */
+    z-index:99;
+    background-color: #fff;
+    padding: 25px;
+    box-shadow: 0 0 10px 1px #000;
+}
+
+.nav ul{
+    list-style: none;
+}
+
+.nav li{
+
+}
+
+.nav a{
+    text-decoration: none;
+    color: black;
+    font-size: 14px;
+    line-height: 28px;
+    height: 28px;
+}
+.nav a:hover{
+    color:#00a4ff;
+}
+/* nav end */
+
+/* top begin */
+.top{
+    height: 100px;
+    line-height: 100px;
+    background-color: pink;
+}
+
+.top li{
+    display: inline-block;
+    height: 100px;
+    line-height: 100px;
+}
+
+.top .search{
+    
+}
+
+.top .search input{
+    border-color: #00a4ff;
+    width:360px;
+    height:40px;
+}

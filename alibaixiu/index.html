@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8" />
+        <!-- 如果是使用IE浏览器，当看到这行代码的时候，浏览器自动调用IE的最高的内核来解析代码 -->
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
+        <!-- 将默认的理想视口替换成标准理想视口 -->
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0,maximum-scale=1,minimum-scale=1,user-scalable=no"
+        />
+        <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+        <title>Our will should be done</title>
+
+        <!-- Bootstrap -->
+        <link
+            href="./lib/bootstrap-3.3.7-dist/css/bootstrap.css"
+            rel="stylesheet"
+        />
+
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!-- 一种注释： 条件注释 -->
+        <!-- 作用： 为了让IE浏览器能解析HTML5的标签和CSS3中的属性和媒体查询 -->
+
+        <!--[if lt IE 9]>
+            <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+            <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+        <script>
+            whatScreen();
+            window.onresize = function() {
+                whatScreen();
+            };
+            function whatScreen() {
+                var width = document.querySelector("html").offsetWidth;
+                var title = document.querySelector("title");
+                if (width <= 768) {
+                    title.innerHTML = "极小屏幕-" + width;
+                } else {
+                    if (width > 768 && width <= 992) {
+                        title.innerHTML = "小屏幕-" + width;
+                    } else {
+                        if (width > 992 && width <= 1200) {
+                            title.innerHTML = "普通屏幕-" + width;
+                        } else {
+                            if (width > 1200) {
+                                title.innerHTML = "大屏幕-" + width;
+                            }
+                        }
+                    }
+                }
+            }
+        </script>
+        <link rel="stylesheet" href="./css/index.css" />
+    </head>
+    <body>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-2 col-md-2">
+                    <div class="menu-left">
+                        <a href="#" class="logo">
+                            <img
+                                class="hidden-xs"
+                                src="./images/logo.png"
+                                alt=""
+                            />
+                            <span class="visible-xs">阿里百秀</span>
+                        </a>
+                        <div class="menu-list clearfix">
+                            <a href="#">
+                                <span
+                                    class="glyphicon glyphicon-camera"
+                                    aria-hidden="true"
+                                ></span>
+                                <span>生活馆</span>
+                            </a>
+                            <a href="#">
+                                <span
+                                    class="glyphicon glyphicon-camera"
+                                    aria-hidden="true"
+                                ></span>
+                                <span>生活馆</span>
+                            </a>
+
+                            <a href="#">
+                                <span
+                                    class="glyphicon glyphicon-camera"
+                                    aria-hidden="true"
+                                ></span>
+                                <span>生活馆</span>
+                            </a>
+
+                            <a href="#">
+                                <span
+                                    class="glyphicon glyphicon-camera"
+                                    aria-hidden="true"
+                                ></span>
+                                <span>生活馆</span>
+                            </a>
+
+                            <a href="#">
+                                <span
+                                    class="glyphicon glyphicon-camera"
+                                    aria-hidden="true"
+                                ></span>
+                                <span>生活馆</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-7 col-md-7">
+                    <div class="alx-content">
+                        <div class="alx-content-img">
+                            <a href="#" class="big-img">
+                                <img src="./upload/lg.png" alt="" />
+                                <span>阿里百秀</span>
+                            </a>
+                            <div class="small-img clearfix">
+                                <a href="#">
+                                    <img src="./upload/1.jpg" alt="" />
+                                    <span
+                                        >奇了 成都一小区护卫长得像马云
+                                        市民纷纷求合影</span
+                                    >
+                                </a>
+                                <a href="#">
+                                    <img src="./upload/2.jpg" alt="" />
+                                    <span
+                                        >奇了 成都一小区护卫长得像马云
+                                        市民纷纷求合影</span
+                                    >
+                                </a>
+                                <a href="#">
+                                    <img src="./upload/3.jpg" alt="" />
+                                    <span
+                                        >奇了 成都一小区护卫长得像马云
+                                        市民纷纷求合影</span
+                                    >
+                                </a>
+                                <a href="#">
+                                    <img src="./upload/4.jpg" alt="" />
+                                    <span
+                                        >奇了 成都一小区护卫长得像马云
+                                        市民纷纷求合影</span
+                                    >
+                                </a>
+                            </div>
+                        </div>
+                        <div class="alx-content-text">
+                            <div class="item">
+                                <div class="row">
+                                    <div
+                                        class="col-lg-8 col-md-8 col-sm-8 shg-text"
+                                    >
+                                        <a href="#">
+                                            <h4>
+                                                生活馆 关于指甲的10个健康知识
+                                                你知道几个？
+                                            </h4>
+                                            <span
+                                                >alibaixiu 发布于
+                                                2015-11-23</span
+                                            >
+                                            <p>
+                                                指甲是经常容易被人们忽略的身体部位，
+                                                事实上从指甲的健康状况可以看出一个人的身体健康状况，
+                                                快来看看10个暗藏在指甲里知识吧！
+                                            </p>
+                                        </a>
+                                        <div class="other">
+                                            <span
+                                                >阅读(2417)评论(1)赞 (18)
+                                                标签：</span
+                                            >
+                                            <a href="#">健康</a> /
+                                            <a href="#">感染</a> /
+                                            <a href="#">指甲</a> /
+                                            <a href="#">疾病</a> /
+                                            <a href="#">皮肤</a> /
+                                            <a href="#">营养</a> /
+                                            <a href="#">趣味生活</a>
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="col-lg-4 col-md-4 col-sm-4 hidden-xs my-img"
+                                    >
+                                        <img src="./upload/1.jpg" alt="" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="row">
+                                    <div
+                                        class="col-lg-8 col-md-8 col-sm-8 shg-text"
+                                    >
+                                        <a href="#">
+                                            <h4>
+                                                生活馆 关于指甲的10个健康知识
+                                                你知道几个？
+                                            </h4>
+                                            <span
+                                                >alibaixiu 发布于
+                                                2015-11-23</span
+                                            >
+                                            <p>
+                                                指甲是经常容易被人们忽略的身体部位，
+                                                事实上从指甲的健康状况可以看出一个人的身体健康状况，
+                                                快来看看10个暗藏在指甲里知识吧！
+                                            </p>
+                                        </a>
+                                        <div class="other">
+                                            <span
+                                                >阅读(2417)评论(1)赞 (18)
+                                                标签：</span
+                                            >
+                                            <a href="#">健康</a> /
+                                            <a href="#">感染</a> /
+                                            <a href="#">指甲</a> /
+                                            <a href="#">疾病</a> /
+                                            <a href="#">皮肤</a> /
+                                            <a href="#">营养</a> /
+                                            <a href="#">趣味生活</a>
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="col-lg-4 col-md-4 col-sm-4 hidden-xs my-img"
+                                    >
+                                        <img src="./upload/1.jpg" alt="" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="row">
+                                    <div
+                                        class="col-lg-8 col-md-8 col-sm-8 shg-text"
+                                    >
+                                        <a href="#">
+                                            <h4>
+                                                生活馆 关于指甲的10个健康知识
+                                                你知道几个？
+                                            </h4>
+                                            <span
+                                                >alibaixiu 发布于
+                                                2015-11-23</span
+                                            >
+                                            <p>
+                                                指甲是经常容易被人们忽略的身体部位，
+                                                事实上从指甲的健康状况可以看出一个人的身体健康状况，
+                                                快来看看10个暗藏在指甲里知识吧！
+                                            </p>
+                                        </a>
+                                        <div class="other">
+                                            <span
+                                                >阅读(2417)评论(1)赞 (18)
+                                                标签：</span
+                                            >
+                                            <a href="#">健康</a> /
+                                            <a href="#">感染</a> /
+                                            <a href="#">指甲</a> /
+                                            <a href="#">疾病</a> /
+                                            <a href="#">皮肤</a> /
+                                            <a href="#">营养</a> /
+                                            <a href="#">趣味生活</a>
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="col-lg-4 col-md-4 col-sm-4 hidden-xs my-img"
+                                    >
+                                        <img src="./upload/1.jpg" alt="" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="row">
+                                    <div
+                                        class="col-lg-8 col-md-8 col-sm-8 shg-text"
+                                    >
+                                        <a href="#">
+                                            <h4>
+                                                生活馆 关于指甲的10个健康知识
+                                                你知道几个？
+                                            </h4>
+                                            <span
+                                                >alibaixiu 发布于
+                                                2015-11-23</span
+                                            >
+                                            <p>
+                                                指甲是经常容易被人们忽略的身体部位，
+                                                事实上从指甲的健康状况可以看出一个人的身体健康状况，
+                                                快来看看10个暗藏在指甲里知识吧！
+                                            </p>
+                                        </a>
+                                        <div class="other">
+                                            <span
+                                                >阅读(2417)评论(1)赞 (18)
+                                                标签：</span
+                                            >
+                                            <a href="#">健康</a> /
+                                            <a href="#">感染</a> /
+                                            <a href="#">指甲</a> /
+                                            <a href="#">疾病</a> /
+                                            <a href="#">皮肤</a> /
+                                            <a href="#">营养</a> /
+                                            <a href="#">趣味生活</a>
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="col-lg-4 col-md-4 col-sm-4 hidden-xs my-img"
+                                    >
+                                        <img src="./upload/1.jpg" alt="" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="row">
+                                    <div
+                                        class="col-lg-8 col-md-8 col-sm-8 shg-text"
+                                    >
+                                        <a href="#">
+                                            <h4>
+                                                生活馆 关于指甲的10个健康知识
+                                                你知道几个？
+                                            </h4>
+                                            <span
+                                                >alibaixiu 发布于
+                                                2015-11-23</span
+                                            >
+                                            <p>
+                                                指甲是经常容易被人们忽略的身体部位，
+                                                事实上从指甲的健康状况可以看出一个人的身体健康状况，
+                                                快来看看10个暗藏在指甲里知识吧！
+                                            </p>
+                                        </a>
+                                        <div class="other">
+                                            <span
+                                                >阅读(2417)评论(1)赞 (18)
+                                                标签：</span
+                                            >
+                                            <a href="#">健康</a> /
+                                            <a href="#">感染</a> /
+                                            <a href="#">指甲</a> /
+                                            <a href="#">疾病</a> /
+                                            <a href="#">皮肤</a> /
+                                            <a href="#">营养</a> /
+                                            <a href="#">趣味生活</a>
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="col-lg-4 col-md-4 col-sm-4 hidden-xs my-img"
+                                    >
+                                        <img src="./upload/1.jpg" alt="" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-3">
+                    <div class="menu-right">
+                        <a href="#" class="zgboke">
+                            <img src="./upload/zgboke.jpg" alt="" />
+                        </a>
+                        <div class="zgboke-desc">
+                            <span>热搜</span>
+                            <h4>欢迎加入中国博客联盟</h4>
+                            <p>
+                                这里收录国内各个领域的优秀博客,是一个全人工编辑的开放式博客联盟交流和展示平台…
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        <script src="./lib/jquery.js"></script>
+        <!-- Include all compiled plugins (below), or include individual files as needed -->
+        <script src="./lib/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+    </body>
+</html>

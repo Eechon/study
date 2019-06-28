@@ -1,0 +1,43 @@
+/* 初始化样式文件 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+ul {
+  list-style: none;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+  /* 使a标签能和内容一样大 */
+  display: block;
+  /* 取消a标签高亮显示 */
+  -webkit-tap-highlight-color: transparent;
+}
+input {
+  outline: none;
+  border: none;
+}
+img {
+  width: 100%;
+  /* 去除图片底部3px的间距 */
+  display: block;
+}
+.clearfix:after {
+  content: '';
+  display: block;
+  clear: both;
+  height: 0;
+  line-height: 0;
+  visibility: hidden;
+}
+/* .clearfix::before,
+.clearfix::after {
+    content: '';
+    display: table;
+    line-height: 0; 
+}
+.clearfix:after {
+    clear: both;
+} */

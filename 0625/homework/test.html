@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>元奭</title>
+    </head>
+    <body>
+        <!-- 求n个数中的最大值 -->
+        <script>
+            /* 手动输入用逗号隔开的N个数 */
+            /* arguments是伪数组，可当成数组看。是函数的属性？还是方法，方法不太可能 */
+            function getMaxN() {
+                var max = arguments[0];
+                for(var i =1 ; i<arguments.length;i++){
+                    if(max < arguments[i]) max = arguments[i];
+                }
+                return max;
+            }
+
+            console.log(getMaxN(178,2,18,4,5,42,52,82));
+        </script>
+    </body>
+</html>

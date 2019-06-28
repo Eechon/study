@@ -1,0 +1,165 @@
+/* 引入微金所字体图标文件 */
+/* 导入 字体文件 */
+@font-face {
+  font-family: 'wjsfont';
+  src: url('../font/MiFie-Web-Font.eot');
+  src: url('../font/MiFie-Web-Font.eot?#iefix') format('embedded-opentype'), url('../font/MiFie-Web-Font.woff') format('woff'), url('../font/MiFie-Web-Font.ttf') format('truetype'), url('../font/MiFie-Web-Font.svg') format('svg');
+}
+/* 定义 使用的class */
+.wjsfont {
+  position: relative;
+  top: 1px;
+  display: inline-block;
+  font-family: 'wjsfont';
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1;
+}
+.wjsfont-logo::before {
+  content: '\e920';
+}
+.wjsfont-name::before {
+  content: '\e921';
+}
+.wjsfont-e903::before {
+  content: '\e903';
+}
+.wjsfont-e901::before {
+  content: '\e901';
+}
+.wjsfont-e904::before {
+  content: '\e904';
+}
+.wjsfont-e905::before {
+  content: '\e905';
+}
+.wjsfont-e902::before {
+  content: '\e902';
+}
+/* 添加 产品列表的 文字样式 */
+.wjsfont-e915::before {
+  content: '\e915';
+}
+.wjsfont-new01::before {
+  content: "\e90e";
+}
+.wjsfont-new02::before {
+  content: "\e90f";
+}
+.wjsfont-new03::before {
+  content: "\e910";
+}
+.wjsfont-new04::before {
+  content: "\e911";
+}
+/* 网页 最下方的 合作单位 */
+.wjsfont-partner01::before {
+  content: "\e946";
+}
+.wjsfont-partner02::before {
+  content: "\e92f";
+}
+.wjsfont-partner03::before {
+  content: "\e92e";
+}
+.wjsfont-partner04::before {
+  content: "\e92a";
+}
+.wjsfont-partner05::before {
+  content: "\e929";
+}
+.wjsfont-partner06::before {
+  content: "\e931";
+}
+.wjsfont-partner07::before {
+  content: "\e92c";
+}
+.wjsfont-partner08::before {
+  content: "\e92b";
+}
+.wjsfont-partner09::before {
+  content: "\e92d";
+}
+/* index页面样式 */
+/* 头部工具栏 */
+.topTool .row {
+  text-align: center;
+}
+.topTool .row > div {
+  height: 40px;
+  line-height: 40px;
+  border: 1px solid #000;
+  color: #808080;
+}
+.topTool .row > div a {
+  position: relative;
+  color: inherit;
+}
+.topTool .row > div a > img {
+  display: none;
+  position: absolute;
+  left: -5px;
+  top: 15px;
+}
+.topTool .row > div a:hover > img {
+  display: block;
+}
+/* 导航 */
+.index_nav > .navbar {
+  /* 清除与下面轮播图的间距 */
+  margin-bottom: 0;
+}
+.index_nav .container a {
+  height: 80px;
+  line-height: 80px;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+.index_nav .container a:hover,
+.index_nav .container a:focus {
+  border-bottom: 1px solid red;
+}
+.index_nav .container .navbar-brand:hover {
+  border-bottom: none;
+}
+.index_nav .container .navbar-brand span {
+  font-size: 70px;
+  padding: 5px;
+}
+.index_nav .container .navbar-brand .wjsfont-logo {
+  color: red;
+}
+/* 轮播图 */
+/* 交易保障 */
+.exchange {
+  margin: 50px 0;
+}
+.exchange a {
+  color: #808080;
+}
+.exchange a:hover {
+  color: red;
+}
+.exchange a .media {
+  margin-top: 20px;
+}
+.exchange a .media .media-left .wjsfont {
+  font-size: 40px;
+}
+.exchange a .media .media-body h4 {
+  font-size: 22px;
+}
+/* 排队 */
+.queue {
+  border-top: 1px solid #000;
+  border-bottom: 1px solid #000;
+}
+.queue .row > div {
+  height: 80px;
+  line-height: 80px;
+}
+.queue .row > div a {
+  color: red;
+  border-bottom: 1px dashed red;
+}
+/* 微投资 */

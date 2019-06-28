@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>元奭</title>
+</head>
+<body>
+    <script>
+        /* 创建对象——狗 */
+        var dog = {};
+        dog.name = '小汪';
+        dog.age = 1;
+        dog.gender = '雄性';
+        dog.type = '柯基';
+        dog.color = '白色';
+        dog.run = function(){
+            console.log('速度七十迈...心情是自由自在');
+        }
+        dog.bark = function(){
+            console.log('嘤嘤嘤...');
+        }
+        console.log(dog.run());
+
+        /* 自定义构造函数 */
+        function Car(brand,color,weight,price) {
+            this.brand = brand;
+            this.color = color;
+            this.weight = weight;
+            this.price = price;
+            this.startup = function(){
+                console.log('honghonghong');
+            }
+            this.flameout = function(){
+                console.log('熄火了');
+            }
+        } 
+        var c1 = new Car('BMW','while','2T','1000K');
+        console.log(c1);
+    </script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>EN TAEO Adun</title>
+</head>
+<body>
+    文字wenzi
+    <input id="btn" value="点击按钮变色" type="button">
+</body>
+<script>
+    console.log(document);
+    debugger;
+    // 1.查找元素
+    var btn = document.getElementById("btn");
+    // 2.事件绑定
+    btn.onclick = function(){
+        btn.style.backgroundColor = 'pink';
+    }
+
+</script>
+</html>

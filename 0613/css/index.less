@@ -1,0 +1,75 @@
+/* 引入样式初始化文件 */
+@import './base.less';
+
+/* index页面样式 */
+.main {
+    max-width: 540px;
+    min-width: 320px;
+    margin: 0 auto;   
+}
+
+/* 头部模块样式开始 */
+.cate {
+    display: flex;
+    height: 90px;
+    border-radius:5px;
+    margin: 5px 0;
+    background-color: #fa7f50;
+    color: #fff;
+    font-size: 14px;
+    // 左边样式
+    .main_menu {
+        flex: 1;
+        display: flex;
+        // 主轴改为竖轴
+        flex-direction: column;
+        // 主轴竖轴均分
+        justify-content: space-around;
+        // 侧轴横轴
+        align-items: center;
+        span:last-child{
+            width: 43px;
+            height: 43px;
+            background: url(../images/xc_sprites.png) no-repeat 0  -260px/2;
+            background-size: 208px/2 655px/2;
+        }
+    }
+    // 右边样式
+    .tab_menu {
+        flex: 2;
+        display: flex;
+        // 这个是要换行
+        flex-wrap:wrap;
+        a {
+            display: flex;
+            width: 50%;
+            // 主轴横轴居中
+            justify-content: center;
+            // 侧轴竖轴居中
+            align-items: center;
+            border-left: 1px solid #fff;
+            &:nth-child(-n+2) {
+                border-bottom: 1px solid #fff;
+            }
+        }
+    }
+
+    // 剩下样式对应重写
+    &.ticket {
+        background-color: #3d98ff;
+        .main_menu {
+            span:last-child {
+                background-position: left bottom;
+            }
+        }
+    }
+    &.travel {
+        background-color: #44c522;
+        .main_menu {
+            span:last-child {
+                background-position: 0 -480px/2;
+            }
+        }
+    }
+}
+/* 头部模块样式结束 */

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>纳克萨玛斯</title>
+    <style>
+        /* input{
+            border:none;
+        } */
+        .box input:nth-child(1){
+            border: 1px dotted blue;
+        }
+        .box input:nth-child(3){
+            border: none;
+            border-bottom: 1px dashed red;
+        }
+        .box input:nth-child(5){
+            border:1px solid #ccc;
+            color: blueviolet;
+        }
+        .box input:nth-child(5)::-webkit-input-placeholder {
+            color:red!important;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        用户名：<input type="text" name="" id="">
+        <br>
+        邮&nbsp;箱：<input type="email" name="" id="">
+        <br>
+        搜索一下：<input type="text" name="" id="" placeholder="请输入...">
+    </div>
+</body>
+</html>

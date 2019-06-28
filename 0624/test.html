@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>元奭</title>
+</head>
+<body>
+    
+</body>
+<script>
+    var n = parseInt(prompt('请输入一个整数'));
+    var flag = true;
+    for(var i = 2; i <= n-1; i++){
+        if(n%i === 0){
+            flag = false;
+            break;
+        }
+    }
+    if(flag === true) {
+        console.log('这就是一个质数');
+    }else {
+        console.log('不是一个质数');
+    }
+</script>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>元奭</title>
+    </head>
+    <body>
+        <!-- 小娜的函数封装 -->
+        <script>
+            // 函数封装部分
+            // 对于时间格式中小于10的补0
+            function patchZero(number) {
+                if (number < 10) number = "0" + number;
+                return number;
+            }
+            //获得一个固定格式的时间
+            function formatDate() {
+                var date = new Date();
+                var year = patchZero(date.getFullYear());
+                var mouth = patchZero(date.getMonth() + 1);
+                var day = patchZero(date.getDate());
+                var hour = patchZero(date.getHours());
+                var minute = patchZero(date.getMinutes());
+                var second = patchZero(date.getSeconds());
+
+                var time =
+                    year +
+                    "-" +
+                    mouth +
+                    "-" +
+                    day +
+                    " " +
+                    hour +
+                    ":" +
+                    minute +
+                    ":" +
+                    second;
+
+                return time;
+            }
+            
+            // 小娜主体部分
+            while (true) {
+                var msg = prompt(
+                    "你好，我是小娜，请输入 \n" +
+                        "1.求和 \n" +
+                        "2.获取时间 \n" +
+                        "3.讲个笑话 \n" +
+                        "输入q退出和小娜聊天"
+                );
+                if (msg === "q") {
+                    alert("你要离开小娜了");
+                    break;
+                }
+                switch (msg) {
+                    case "1":
+                    case "求和":
+                        var str = prompt(
+                            "请输入需要求和的数，用逗号隔开，如：1,2,3,4"
+                        );
+                        var arr = str.split(",");
+                        var sum = 0;
+                        debugger;
+                        for (var i = 0; i < arr.length; i++) {
+                            sum += parseFloat(arr[i]);
+                        }
+                        alert("这些数的和是：" + sum);
+                        break;
+                    case "2":
+                    case "时间":
+                        var time = formatDate();
+                        alert("现在时间是：" + time);
+                        break;
+                    case "3":
+                    case "笑话":
+                        var joke = [
+                            "笑话1",
+                            "笑话2",
+                            "笑话3",
+                            "笑话4",
+                            "笑话5",
+                            "笑话6",
+                            "笑话7"
+                        ];
+                        var r = Math.floor(Math.random() * joke.length);
+                        alert(joke[r]);
+                } /* end switch */
+            } /* end while */
+        </script>
+    </body>
+</html>

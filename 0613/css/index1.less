@@ -1,0 +1,76 @@
+/* 引入初始化文件 */
+@import './base.less';
+
+/* index1页面样式 */
+.box {
+    max-width: 540px;
+    min-width: 320px;
+    margin: 0 auto;
+}
+
+/* 头部模块开始 */
+.cate {
+    display: flex;
+    height: 90px;
+    background-color: #fa7f50;
+    border-radius: 5px;
+    margin: 5px 0;
+    font-size: 14px;
+    color: #fff;
+    .main_menu {
+        flex:1;
+        display: flex;
+        // 改主轴为竖轴
+        flex-direction: column;
+        // 主轴方向均分
+        justify-content: space-around;
+        // 侧轴方向居中
+        align-items:center;
+        span:last-child {
+            width: 43px;
+            height: 43px;
+            background: url('../images/xc_sprites.png') no-repeat 0 -260px/2;
+            background-size: 208px/2 655px/2;
+        }
+    }
+    .tab_menu {
+        flex:2;
+        display: flex;
+        // 子元素换行
+        flex-wrap: wrap;
+        // 主轴侧轴方向居中
+        // justify-content: center;
+        // align-items: center;
+        // 它的子元素是a，不是a中的文字
+        a {
+            width: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-left: 1px solid #fff;
+            &:nth-child(-n+2) {
+                border-bottom: 1px solid #fff;
+            }
+        }
+    }
+
+    &.ticket {
+        background-color: #3d98ff;
+        .main_menu {
+            span:last-child {
+                background-position: left bottom;
+            }
+        }
+    }
+    &.travel {
+        background-color: #44c522;
+        .main_menu {
+            span:last-child {
+                background-position: 0 -480px/2;
+            }
+        }
+    }
+
+}
+
+/* 头部模块结束 */

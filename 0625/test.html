@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>元奭</title>
+</head>
+<body>
+    
+</body>
+<script>
+    function getsum1(n) {
+        var sum =0 ;
+        for(var i =1; i<= n ;i++){
+            sum +=i;
+        }
+        return sum;
+    }
+    var s1 = getsum1(10);
+    console.log(s1);
+    function getsum2(n,m) {
+        var sum = 0;
+        for(;n<=m;n++){
+            sum +=n;
+        }
+        return sum;
+    }
+    var s2 = getsum2(1,10);
+    console.log(s2);
+
+    function circle(r) {
+        var s =0;
+        s=Math.PI*r*r;
+        return s;
+    }
+    var s3 = circle(2);
+    console.log(s3);
+
+    function getsum3(x,y,z) {
+        var sum = 0;
+        sum =x+y+z;
+        return sum;
+    }
+    var s4 = getsum3(1,2,3) 
+    console.log(s4);
+</script>
+</html>

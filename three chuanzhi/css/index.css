@@ -1,0 +1,173 @@
+/* index样式文件 */
+
+/* top模块样式文件开始 */
+.top {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 14px 0;
+    background-color: #055c92;
+}
+.top p {
+    font-size: 12px;
+    color: #fff;
+}
+/* top模块样式文件结束 */
+
+/* 头部模块样式开始 */
+.header {
+    margin-top: 40px;
+}
+.header .logo a{
+    display: block;
+    background: url('../images/logo.png') no-repeat;
+    width: 166px;
+    height: 53px;
+    font-size: 0px;
+}
+.header_nav {
+    margin-left: 65px;
+}
+.header_nav li {
+    float: left;
+    font-size: 14px;
+    padding: 20px 0;
+    margin-right: 25px;
+}
+/* 头部模块样式结束 */
+
+/* 主体模块开始 */
+.img_left {
+    width: 960px;
+}
+.info_right h3 {
+    width: 232px;
+    background-color: #055c92;
+    /* 下面两行和用height与line-height表达有什么区别呢 */
+    font-size: 16px;
+    padding: 16px 0;
+
+    text-align: center;
+    color: #fff;
+}
+.info_right .info_list {
+    padding: 12px 9px;
+    background-color: #f9f9f9;
+}
+.info_right .info_list ul {
+    list-style-type: square;
+}
+.info_right .info_list li {
+    color: #055c92;
+    font-size: 12px;
+    height: 36px;
+    line-height: 36px;
+    margin-left: 13px;
+}
+.info_list li a {
+    /* color: #000; */
+}
+/* 主体模块结束 */
+
+/* 前端详情模块开始 */
+.web_info {
+    background-color: #f3f3f3;
+    padding-top: 50px;
+    padding-bottom: 105px;
+}
+.web_info .web_left {
+    background-color: #f5717c;
+    width: 230px;
+    height: 350px;
+    /* padding: 35px 0; */
+}
+.web_left .web_left_info {
+    padding: 35px 20px;
+}
+.web_left .web_left_info h3 {
+    font-size: 22px;
+    color: #fff;
+}
+.web_left .web_left_info  p {
+    font-size: 14px;
+    color: #fff;
+}
+.web_left .web_left_info .img_wrap {
+    width: 148px;
+    height: 156px;
+    margin: 35px auto 0;
+}
+.web_right {
+    width: 950px;
+}
+.web_right li {
+    float: left;
+    width: 230px;
+    height: 170px;
+    line-height: 170px;
+    background-color: #fff;
+    text-align: center;
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+.web_right li:nth-child(4n) {
+    margin-right: 0;
+}
+/* 前端详情模块结束 */
+
+/* 底部模块开始 */
+.footer {
+    margin-top: 55px;
+}
+.footer_nav dl {
+    float: left;
+    margin-right: 116px;
+}
+.footer_nav dt {
+    font-size: 16px;
+    color: #000;
+    margin-bottom: 12px;
+}
+.footer_nav dd {
+    height: 26px;
+    line-height: 26px;
+    font-size: 12px;
+}
+
+.footer_link p {
+    height: 26px;
+    line-height: 26px;
+    color: #000;
+}
+.footer_link a {
+    height: 26px;
+    line-height: 26px;
+    text-align: justify;
+    margin-right: 7px;
+}
+
+.footer_logo a {
+    display: block;
+    width: 166px;
+    height: 53px;
+    background: url('../images/logo.png') no-repeat;
+    font-size: 0;
+}
+.copyright {
+    margin-left: 20px;
+}
+.copyright p {
+    height: 26px;
+    line-height: 26px;
+    font-size: 14px;
+    color: #000;
+}
+/* 底部模块结束 */
+
+/* test模块开始 */
+.test {
+    height: 1200px;
+    background-color: pink;
+}
+/* test模块结束 */

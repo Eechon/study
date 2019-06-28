@@ -1,0 +1,319 @@
+/* 引入初始化文件 */
+/* 初始化样式文件 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+ul {
+  list-style: none;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+  /* 使a标签能和内容一样大 */
+  display: block;
+  /* 取消a标签高亮显示 */
+  -webkit-tap-highlight-color: transparent;
+}
+input {
+  outline: none;
+  border: none;
+}
+img {
+  width: 100%;
+  /* 去除图片底部3px的间距 */
+  display: block;
+}
+.clearfix:after {
+  content: '';
+  display: block;
+  clear: both;
+  height: 0;
+  line-height: 0;
+  visibility: hidden;
+}
+/* .clearfix::before,
+.clearfix::after {
+    content: '';
+    display: table;
+    line-height: 0; 
+}
+.clearfix:after {
+    clear: both;
+} */
+/* index页面样式 */
+/* 公共样式 */
+.jd_red {
+  color: #c91523;
+}
+/* view样式 */
+.view {
+  font-size: 14px;
+  background-color: #f5f5f5;
+}
+/* 头部模块样式开始 */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 40px;
+  position: fixed;
+  background-color: #c91523;
+  z-index: 9;
+}
+header .logo {
+  margin-right: 10px;
+}
+header .logo > h1 > a {
+  display: block;
+  width: 56px;
+  height: 21px;
+  background: url(../images/jd-sprites.png) no-repeat 0 -110px;
+  background-size: 200px 200px;
+  margin-left: 5px;
+  font-size: 0;
+}
+header .search {
+  flex: 1;
+  padding: 5px 0;
+  height: 100%;
+  position: relative;
+}
+header .search > input {
+  width: 100%;
+  height: 100%;
+  border-radius: 15px;
+  text-indent: 25px;
+}
+header .search:after {
+  content: "";
+  position: absolute;
+  top: 12px;
+  left: 7px;
+  width: 20px;
+  height: 20px;
+  background: url("../images/jd-sprites.png") no-repeat -60px -110px;
+  background-size: 200px 200px;
+}
+header .login {
+  font-size: 16px;
+  color: #fff;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+/* 头部模块样式结束 */
+/* 轮播图开始 */
+.slider {
+  padding-top: 40px;
+}
+/* 轮播图结束 */
+/* 京东导航开始 */
+.jd_nav {
+  /* 这里老师用了浮动，然后元素的居中处理的都比较巧妙，学习模仿一下 */
+}
+.jd_nav a {
+  float: left;
+  width: 25%;
+  padding: 5px 0;
+  /* 浮动在移动端的处理方式很不一样啊，这里的居中针对块级元素和行内元素用了不同的方法 */
+  /* 处理a标签里面的p标签 */
+  text-align: center;
+}
+.jd_nav a img {
+  width: 50%;
+  /* 块元素居中 */
+  margin: 0 auto;
+}
+/* 京东导航结束 */
+/* 掌上秒杀开始 */
+.hand_kill {
+  margin-top: 10px;
+  padding: 0 10px;
+}
+.hand_kill .kill_title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.hand_kill .kill_title .kill_time {
+  display: flex;
+}
+.hand_kill .kill_title .kill_time .clock {
+  width: 18px;
+  height: 22px;
+  background: url(../images/jd-sprites.png) no-repeat -84px -110px;
+  background-size: 200px 200px;
+}
+.hand_kill .kill_title .kill_time > p {
+  font-size: 16px;
+  padding: 0 15px;
+}
+.hand_kill .kill_title .kill_time .time > span {
+  color: #fff;
+  background-color: #000;
+  padding: 1px 2px;
+}
+.hand_kill .kill_title .kill_time .time > span:nth-child(3n) {
+  color: #000;
+  background: #fff;
+}
+.hand_kill .kill_content {
+  /* 这里用了li，我知道老师为什么不用display:flex了，因为li默认是竖着排列啊 */
+  /* 不是因为li的问题，是要把display设置到ul上才行 */
+}
+.hand_kill .kill_content ul {
+  display: flex;
+  /* 给ul设置flex之后，li一样变成了横向排列 */
+}
+.hand_kill .kill_content li {
+  flex: 1;
+  list-style: none;
+  text-align: center;
+  position: relative;
+}
+.hand_kill .kill_content li > span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  background-color: #fdb60a;
+  color: #fff;
+  border-radius: 50%;
+  padding: 2px 7px;
+}
+/* 掌上秒杀结束 */
+/* 618狂撒神券开始 */
+.festival {
+  position: relative;
+}
+.festival .small_img {
+  position: absolute;
+  top: 70px;
+  left: 0px;
+  padding: 0 5px;
+}
+.festival .small_img > a {
+  float: left;
+  width: 50%;
+}
+/* 618狂撒神券结束 */
+/* 活动产品展示开始 */
+.product_show {
+  display: flex;
+  flex-wrap: wrap;
+}
+.product_show a {
+  width: 50%;
+}
+.product_show a:nth-child(-n + 3) {
+  width: 33.3333%;
+}
+/* 活动产品展示结束 */
+/* 广告模块开始 */
+.adv {
+  padding: 5px;
+}
+/* 广告模块结束 */
+/* 特色超市 */
+.supermarket {
+  margin-top: 10px;
+}
+.supermarket .market_title {
+  font-size: 16px;
+  padding-left: 10px;
+}
+.supermarket .market_content a {
+  float: left;
+  width: 50%;
+}
+.supermarket .market_content a:nth-child(4) {
+  clear: both;
+}
+/* 特色结束 */
+/* 主题街开始 */
+.theme_street {
+  margin-top: 10px;
+}
+.theme_street .theme_title {
+  font-size: 16px;
+  padding-left: 10px;
+}
+.theme_street .theme_content a {
+  float: left;
+  width: 25%;
+}
+.theme_street .theme_content a:nth-child(-n + 2) {
+  width: 50%;
+}
+.theme_street .theme_content a:nth-child(2) {
+  padding-bottom: 1px;
+}
+/* 主题街结束 */
+/* 品牌推荐开始 */
+.recom_brand {
+  margin-top: 10px;
+}
+.recom_brand .brand_title {
+  font-size: 16px;
+  padding-left: 10px;
+}
+.recom_brand .brand_content {
+  display: flex;
+}
+.recom_brand .brand_content a {
+  width: 30%;
+}
+.recom_brand .brand_content a:first-child {
+  width: 40%;
+}
+/* 品牌推荐结束 */
+/* 猜你喜欢开始 */
+.guessyou_like {
+  margin-top: 5px;
+}
+.guessyou_like .guess_title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.guessyou_like .guess_title h4 {
+  font-size: 16px;
+  padding-left: 5px;
+}
+.guessyou_like .guess_title a img {
+  display: inline;
+  vertical-align: middle;
+}
+.guessyou_like .guess_content ul {
+  display: flex;
+  flex-wrap: wrap;
+}
+.guessyou_like .guess_content li {
+  width: 50%;
+  padding: 10px;
+}
+.guessyou_like .guess_content li .content_title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.guessyou_like .guess_content li .content_title a {
+  border: 1px solid #ccc;
+  font-size: 12px;
+}
+.guessyou_like .guess_content li .content_goods img {
+  width: 80%;
+  margin: 0 auto;
+}
+.guessyou_like .guess_content li .content_goods p {
+  height: 40px;
+  overflow: hidden;
+  text-align: center;
+  border-bottom: 1px solid #ccc;
+}
+/* 猜你喜欢结束 */
+.box {
+  width: 100%;
+  height: 300px;
+}

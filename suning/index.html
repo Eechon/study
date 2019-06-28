@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>It should be done</title>
+        <link rel="stylesheet" href="./css/index.css" />
+        <script>
+            (function flexible(window, document) {
+                var docEl = document.documentElement;
+                var dpr = window.devicePixelRatio || 1;
+                function setBodyFontSize() {
+                    if (document.body) {
+                        document.body.style.fontSize = 12 * dpr + "px";
+                    } else {
+                        document.addEventListener(
+                            "DOMContentLoaded",
+                            setBodyFontSize
+                        );
+                    }
+                }
+                setBodyFontSize();
+                function setRemUnit() {
+                    var rem = docEl.clientWidth / 10;
+                    docEl.style.fontSize = rem + "px";
+                }
+                setRemUnit();
+                window.addEventListener("resize", setRemUnit);
+                window.addEventListener("pageshow", function(e) {
+                    if (e.persisted) {
+                        setRemUnit();
+                    }
+                });
+                if (dpr >= 2) {
+                    var fakeBody = document.createElement("body");
+                    var testElement = document.createElement("div");
+                    testElement.style.border = ".5px solid transparent";
+                    fakeBody.appendChild(testElement);
+                    docEl.appendChild(fakeBody);
+                    if (testElement.offsetHeight === 1) {
+                        docEl.classList.add("hairlines");
+                    }
+                    docEl.removeChild(fakeBody);
+                }
+            })(window, document);
+        </script>
+    </head>
+    <body>
+        <div class="view">
+            <!-- 顶部模块 -->
+            <header>
+                <a href="#" class="sort">
+                    <img src="./images/category.png" alt="" />
+                </a>
+                <div class="search">
+                    <input type="text" placeholder="请输入搜索内容" />
+                </div>
+                <a href="#" class="login">登录</a>
+            </header>
+
+            <!-- 轮播图 -->
+            <div class="slider">
+                <a href="#">
+                    <img src=".//images/sn_swiper01.jpg" alt="" />
+                </a>
+            </div>
+
+            <!-- 广告模块0 -->
+            <div class="adv0">
+                <a href="#">
+                    <img src="./images/adv01.gif" alt="" />
+                </a>
+            </div>
+
+            <!-- 苏宁导航 -->
+            <nav class="clearfix">
+                <a href="#"
+                    ><img src="./images/nav01.gif" alt="" /><span
+                        >爆款手机</span
+                    ></a
+                >
+                <a href="#"
+                    ><img src="./images/nav02.png" alt="" /><span
+                        >爆款手机</span
+                    ></a
+                >
+                <a href="#"
+                    ><img src="./images/nav03.png" alt="" /><span
+                        >爆款手机</span
+                    ></a
+                >
+                <a href="#"
+                    ><img src="./images/nav04.png" alt="" /><span
+                        >爆款手机</span
+                    ></a
+                >
+                <a href="#"
+                    ><img src="./images/nav05.png" alt="" /><span
+                        >爆款手机</span
+                    ></a
+                >
+                <a href="#"
+                    ><img src="./images/nav06.png" alt="" /><span
+                        >爆款手机</span
+                    ></a
+                >
+                <a href="#"
+                    ><img src="./images/nav07.png" alt="" /><span
+                        >爆款手机</span
+                    ></a
+                >
+                <a href="#"
+                    ><img src="./images/nav08.png" alt="" /><span
+                        >爆款手机</span
+                    ></a
+                >
+                <a href="#"
+                    ><img src="./images/nav09.png" alt="" /><span
+                        >爆款手机</span
+                    ></a
+                >
+                <a href="#"
+                    ><img src="./images/nav10.png" alt="" /><span
+                        >爆款手机</span
+                    ></a
+                >
+            </nav>
+
+            <!-- 广告模块0 -->
+            <div class="adv0">
+                <a href="#">
+                    <img src="./images/adv02.jpg" alt="" />
+                </a>
+            </div>
+
+            <!-- 热卖模块 -->
+            <div class="hot_sell clearfix">
+                <a href="#"><img src="./images/hs01.png" alt=""/></a>
+                <a href="#"><img src="./images/hs02.png" alt=""/></a>
+                <a href="#"><img src="./images/hs03.png" alt=""/></a>
+                <a href="#"><img src="./images/hs04.png" alt=""/></a>
+                <a href="#">
+                    <img src="./images/hs_wrap.png" alt="" />
+                    <div class="hs_desc">
+                        <img src="./images/hs05.png" alt="" />
+                        <p>中央家电<br />爆款送豪礼</p>
+                    </div>
+                </a>
+                <a href="#">
+                    <img src="./images/hs_wrap.png" alt="" />
+                    <div class="hs_desc">
+                        <img src="./images/hs06.png" alt="" />
+                        <p>中央家电<br />爆款送豪礼</p>
+                    </div>
+                </a>
+                <a href="#">
+                    <img src="./images/hs_wrap.png" alt="" />
+                    <div class="hs_desc">
+                        <img src="./images/hs07.png" alt="" />
+                        <p>中央家电<br />爆款送豪礼</p>
+                    </div>
+                </a>
+                <a href="#">
+                    <img src="./images/hs_wrap.png" alt="" />
+                    <div class="hs_desc">
+                        <img src="./images/hs08.png" alt="" />
+                        <p>中央家电<br />爆款送豪礼</p>
+                    </div>
+                </a>
+            </div>
+
+            <!-- 每日必逛 -->
+            <div class="daily_shop shopping">
+                <div class="shop_title">
+                    <img src="./images/shopping_title.png" alt="" />
+                </div>
+                <div class="shop_content">
+                    <a href="#">
+                        <h4>新品首发</h4>
+                        <p>iQOO立刻预约 6期免息</p>
+                        <div class="img_wrap">
+                            <img src="./images/shopping01.jpg" alt="" />
+                            <img src="./images/shopping02.jpg" alt="" />
+                        </div>
+                    </a>
+                    <a href="#">
+                        <h4>新品首发</h4>
+                        <p>iQOO立刻预约 6期免息</p>
+                        <div class="img_wrap">
+                            <img src="./images/shopping03.jpg" alt="" />
+                            <img src="./images/shopping04.jpg" alt="" />
+                        </div>
+                    </a>
+                    <a href="#">
+                        <h4>新品首发</h4>
+                        <p>iQOO立刻预约 6期免息</p>
+                        <div class="img_wrap">
+                            <img src="./images/shopping05.jpg" alt="" />
+                            <img src="./images/shopping06.jpg" alt="" />
+                        </div>
+                    </a>
+                    <a href="#">
+                        <h4>新品首发</h4>
+                        <p>iQOO立刻预约 6期免息</p>
+                        <div class="img_wrap">
+                            <img src="./images/shopping07.jpg" alt="" />
+                            <img src="./images/shopping08.jpg" alt="" />
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <!-- 广告模块1 -->
+            <div class="adv1">
+                <a href="#">
+                    <img src="./images/adv03.png" alt="" />
+                </a>
+            </div>
+
+            <!-- 酷玩潮流 -->
+            <div class="fashion shopping">
+                <div class="shop_title">
+                    <img src="./images/fas_title.png" alt="" />
+                </div>
+                <div class="shop_content">
+                    <a href="#" class="fashion_special">
+                        <p>内存条都用上了水冷散热，你却还是只能拼命吹风</p>
+                    </a>
+                    <a href="#">
+                        <h4>新品首发</h4>
+                        <p>iQOO立刻预约 6期免息</p>
+                        <div class="img_wrap">
+                            <img src="./images/fs01.webp" alt="" />
+                            <img src="./images/fs02.webp" alt="" />
+                        </div>
+                    </a>
+                    <a href="#">
+                        <h4>新品首发</h4>
+                        <p>iQOO立刻预约 6期免息</p>
+                        <div class="img_wrap">
+                            <img src="./images/fs03.webp" alt="" />
+                            <img src="./images/fs04.webp" alt="" />
+                        </div>
+                    </a>
+                    <a href="#">
+                        <h4>新品首发</h4>
+                        <p>iQOO立刻预约 6期免息</p>
+                        <div class="img_wrap">
+                            <img src="./images/fs05.webp" alt="" />
+                            <img src="./images/fs06.webp" alt="" />
+                        </div>
+                    </a>
+                    <a href="#">
+                        <h4>新品首发</h4>
+                        <p>iQOO立刻预约 6期免息</p>
+                        <div class="img_wrap">
+                            <img src="./images/fs07.webp" alt="" />
+                            <img src="./images/fs08.webp" alt="" />
+                        </div>
+                    </a>
+                    <a href="#">
+                        <h4>新品首发</h4>
+                        <p>iQOO立刻预约 6期免息</p>
+                        <div class="img_wrap">
+                            <img src="./images/fs09.webp" alt="" />
+                            <img src="./images/fs10.webp" alt="" />
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <!-- 生活风尚 -->
+            <div class="life_style shopping">
+                <div class="shop_title">
+                    <img src="./images/sn_life.webp" alt="" />
+                </div>
+                <div class="shop_content">
+                    <a href="#">
+                        <h4>新品首发</h4>
+                        <p>iQOO立刻预约 6期免息</p>
+                        <div class="img_wrap">
+                            <img src="./images/sn_life01.webp" alt="" />
+                            <img src="./images/sn_life02.webp" alt="" />
+                        </div>
+                    </a>
+                    <a href="#">
+                        <h4>新品首发</h4>
+                        <p>iQOO立刻预约 6期免息</p>
+                        <div class="img_wrap">
+                            <img src="./images/sn_life03.webp" alt="" />
+                            <img src="./images/sn_life04.webp" alt="" />
+                        </div>
+                    </a>
+                    <a href="#">
+                        <h4>新品首发</h4>
+                        <p>iQOO立刻预约 6期免息</p>
+                        <div class="img_wrap">
+                            <img src="./images/sn_life05.webp" alt="" />
+                            <img src="./images/sn_life06.webp" alt="" />
+                        </div>
+                    </a>
+                    <a href="#">
+                        <h4>新品首发</h4>
+                        <p>iQOO立刻预约 6期免息</p>
+                        <div class="img_wrap">
+                            <img src="./images/sn_life07.webp" alt="" />
+                            <img src="./images/sn_life08.webp" alt="" />
+                        </div>
+                    </a>
+                    <a href="#">
+                        <h4>新品首发</h4>
+                        <p>iQOO立刻预约 6期免息</p>
+                        <img src="./images/sn_life09.webp" alt="" />
+                    </a>
+                    <a href="#">
+                        <h4>新品首发</h4>
+                        <p>iQOO立刻预约 6期免息</p>
+                        <img src="./images/sn_life10.webp" alt="" />
+                    </a>
+                    <a href="#">
+                        <h4>新品首发</h4>
+                        <p>iQOO立刻预约 6期免息</p>
+                        <img src="./images/sn_life11.webp" alt="" />
+                    </a>
+                    <a href="#">
+                        <h4>新品首发</h4>
+                        <p>iQOO立刻预约 6期免息</p>
+                        <img src="./images/sn_life12.webp" alt="" />
+                    </a>
+                </div>
+            </div>
+
+            <!-- 广告0 -->
+            <div class="adv0">
+                <a href="#">
+                    <img src="./images/cook_room.png" alt="" />
+                </a>
+            </div>
+
+            <!-- 猜你喜欢 -->
+            <div class="guess_like">
+                <div class="guess_title">
+                    <img src="./images/guess.webp" alt="" />
+                </div>
+                <div class="guess_content">
+                    <a href="#">
+                        <img src="./images/guess01.webp" alt="" />
+                        <p>
+                            Apple iPhone XR 128GB 黑色 移动联通电信4G全网通手机
+                            双卡双待
+                        </p>
+                        <span>￥6199</span>
+                    </a>
+                    <a href="#">
+                        <img src="./images/guess02.webp" alt="" />
+                        <p>
+                            Apple iPhone XR 128GB 黑色 移动联通电信4G全网通手机
+                            双卡双待
+                        </p>
+                        <span>￥6199</span>
+                    </a>
+                    <a href="#">
+                        <img src="./images/guess03.webp" alt="" />
+                        <p>
+                            Apple iPhone XR 128GB 黑色 移动联通电信4G全网通手机
+                            双卡双待
+                        </p>
+                        <span>￥6199</span>
+                    </a>
+                    <a href="#">
+                        <img src="./images/guess04.webp" alt="" />
+                        <p>
+                            Apple iPhone XR 128GB 黑色 移动联通电信4G全网通手机
+                            双卡双待
+                        </p>
+                        <span>￥6199</span>
+                    </a>
+                    <a href="#">
+                        <img src="./images/guess05.webp" alt="" />
+                        <p>
+                            Apple iPhone XR 128GB 黑色 移动联通电信4G全网通手机
+                            双卡双待
+                        </p>
+                        <span>￥6199</span>
+                    </a>
+                    <a href="#">
+                        <img src="./images/guess06.webp" alt="" />
+                        <p>
+                            Apple iPhone XR 128GB 黑色 移动联通电信4G全网通手机
+                            双卡双待
+                        </p>
+                        <span>￥6199</span>
+                    </a>
+                    <a href="#">
+                        <img src="./images/guess07.webp" alt="" />
+                        <p>
+                            Apple iPhone XR 128GB 黑色 移动联通电信4G全网通手机
+                            双卡双待
+                        </p>
+                        <span>￥6199</span>
+                    </a>
+                    <a href="#">
+                        <img src="./images/guess08.webp" alt="" />
+                        <p>
+                            Apple iPhone XR 128GB 黑色 移动联通电信4G全网通手机
+                            双卡双待
+                        </p>
+                        <span>￥6199</span>
+                    </a>
+                    <a href="#">
+                        <img src="./images/guess09.webp" alt="" />
+                        <p>
+                            Apple iPhone XR 128GB 黑色 移动联通电信4G全网通手机
+                            双卡双待
+                        </p>
+                        <span>￥6199</span>
+                    </a>
+                    <a href="#">
+                        <img src="./images/guess10.webp" alt="" />
+                        <p>
+                            Apple iPhone XR 128GB 黑色 移动联通电信4G全网通手机
+                            双卡双待
+                        </p>
+                        <span>￥6199</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- 广告0 -->
+            <div class="adv0">
+                <a href="#">
+                    <img src="./images/adv04.webp" alt="" />
+                </a>
+            </div>
+
+            <!-- 撑开底部用box -->
+            <div class="box"></div>
+
+            <!-- 底部模块 -->
+            <footer>
+                <a href="#">
+                    <img src="./images/home_icon.png" alt="" />
+                    <span>首页</span>
+                </a>
+                <a href="#">
+                    <img src="./images/category_icon.png" alt="" />
+                    <span>分类</span>
+                </a>
+                <a href="#">
+                    <img src="./images/menu_icon.png" alt="" />
+                    <span>必抢清单</span>
+                </a>
+                <a href="#">
+                    <img src="./images/cart_icon.png" alt="" />
+                    <span>购物车</span>
+                </a>
+                <a href="#">
+                    <img src="./images/user_icon.png" alt="" />
+                    <span>我的易购</span>
+                </a>
+            </footer>
+        </div>
+    </body>
+</html>

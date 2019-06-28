@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>元奭</title>
+    </head>
+    <body></body>
+    <script>
+        /* 首先自定义一个构造函数 */
+        function AI() {
+            /* 小娜暂时没有特征，只有行为 */
+            /* 行为1：提示用户对话。接收用户输入信息并且返回 */
+            this.ask = function() {
+                var msg = prompt(
+                    "你好，我是小娜，请输入 \n" +
+                        "1.求和 \n" +
+                        "2.获取时间 \n" +
+                        "3.讲个笑话 \n" +
+                        "输入q退出和小娜聊天"
+                );
+                return msg;
+            };
+            /* 行为2：根据用户输入数字求和 需要返回求得的和 */
+            this.calculate = function() {
+                var str = prompt("请输入需要求和的数字，用逗号隔开，如：1,2,3");
+                var arr = str.split(",");
+                var sum = 0;
+                for (var i = 0; i < arr.length; i++) {
+                    sum += parseFloat(arr[i]);
+                }
+                return sum;
+            };
+            this.getSumFrom = function(){
+
+            }
+            /* 行为3：固定格式显示现在时间 */
+            this.getDate = function() {
+                var date = new Date();
+
+                var dates = [
+                    date.getFullYear(),
+                    date.getMonth() + 1,
+                    date.getDate(),
+                    date.getHours(),
+                    date.getMinutes(),
+                    date.getSeconds()
+                ];
+
+                for (var i = 1; i < dates.length; i++) {
+                    if (dates[i] < 10) dates[i] = "0" + dates[i];
+                }
+
+                var time =
+                    dates[0] +
+                    "-" +
+                    dates[1] +
+                    "-" +
+                    dates[2] +
+                    " " +
+                    dates[3] +
+                    ":" +
+                    dates[4] +
+                    ":" +
+                    dates[5];
+                return time;
+            };
+            /* 行为4：在笑话数组中随机显示笑话 */
+            this.sayJoke = function(){
+                var joke = [
+                    '笑话1',
+                    '笑话2',
+                    '笑话3',
+                    '笑话4',
+                    '笑话5',
+                    '笑话6',
+                    '笑话7',
+                ]
+                var index = Math.floor(Math.random()*joke.length);
+                return joke[index];
+            }
+        } /* end func AI */
+
+        /* 其次根据需求让小娜执行行为 */
+        var xiaona = new AI();
+        while (true) {
+            // 行为1，小娜提出问题。
+            var msg = xiaona.ask();
+            // 行为0，退出小娜，因为要使用break，无法创建为函数
+            if (msg === "q") {
+                console.log("即将离开小娜");
+                break;
+            }
+            //接下来是switch选择
+            switch (msg) {
+                case "1":
+                case "求和":
+                    // 行为2，根据用户输入数字求和，首先要获取数字并处理，然后求和运算
+                    var sum = xiaona.calculate();
+                    alert("这些数字的和是：" + sum);
+                    break;
+                case "2":
+                case "时间":
+                    //行为3，
+                    var time =xiaona.getDate();
+                    alert(time);
+                    break;
+                //行为4，讲笑话
+                case '3':
+                case '笑话':
+                var joke = xiaona.sayJoke();
+                alert(joke);
+            }
+        }
+    </script>
+</html>

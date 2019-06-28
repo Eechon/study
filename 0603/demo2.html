@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>元奭</title>
+    <style>
+        .box {
+            position: relative;
+        }
+        .bg {
+            width: 100%;
+        }
+        .header {
+            width: 100%;
+            position: fixed;
+            left: 0;
+            top: 0;
+        }
+
+        .img_l,.img_r {
+            position: absolute;
+            top: 200px;
+        }
+        .img_l {
+            left: 0;
+        }
+        .img_r {
+            right: 0;
+        }
+        .return {
+            /* width: 100%; */
+            position: fixed;
+            right: 10px;
+            bottom: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div id="top"></div>
+        <img class="bg" src="./images/box.png" alt="">
+        <img class="header" id="header" src="./images/r1.png" alt="">
+        <img class="img_l" src="./images/r2_c1.png" alt="">
+        <img class="img_r" src="./images/r2_c1.png" alt="">
+        <a href="#top">
+            <img class="return" src="./images/20150717215921.png" alt="">
+        </a>
+    </div>
+</body>
+</html>
