@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    let arr = [1,2,4,65,7];
+    let str = 'get-element-by-id';
+    console.log(typeof(arr));
+    console.log(arr);
+    let test = str.split('-');
+    console.log(test);
+    test.push('test');
+    console.log(test);
+    console.log(test[0].toUpperCase());
+
+    test.forEach(function(value,index){
+        console.log(value);
+        console.log(typeof(value));
+
+        console.log(value[0]);
+        // console.log(typeof(value));
+    });/* end forEach */
+
+    console.log(test);
+    console.log(test[0]);
+    console.log(test[0][0]);
+    test[0][0] = 'G';
+    // debugger;
+    console.log(test[0][0]);
+</script>
+</html>

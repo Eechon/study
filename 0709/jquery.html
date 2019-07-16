@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>元奭</title>
+    </head>
+    <body>
+        <!-- 学习JQuery -->
+        <div class="box">测试JQuery对象</div>
+        <input type="button" value="开灯" />
+        <input type="button" value="关灯" />
+    </body>
+    <script src="./jquery.js"></script>
+    <script>
+        $(function() {
+            console.log("测试JQuery入口函数");
+            console.log($(".box"));
+
+            $("input:nth-child(3)")
+                // .eq(1)
+                .on("click", function() {
+                    $("body").css("backgroundColor", "#000");
+                });
+            $("input:nth-child(2)")
+                // .eq(0)
+                .on("click", function() {
+                    $("body").css("backgroundColor", "#fff");
+                });
+            console.log($("input:nth-child(0)"));
+            console.log($("input:nth-child(1)"));
+            console.log($("input:nth-child(2)"));
+        });
+    </script>
+</html>

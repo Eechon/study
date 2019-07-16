@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>元奭</title>
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+            }
+
+            .box {
+                width: 450px;
+                height: 450px;
+                border: 1px solid #aaa;
+                position: relative;
+                top: 100px;
+                left: 100px;
+            }
+
+            .small {
+                width: 450px;
+                height: 450px;
+                position: absolute;
+            }
+
+            .mask {
+                position: absolute;
+                background-color: rgba(255, 255, 0, 0.3);
+                width: 225px;
+                height: 225px;
+                top: 0;
+                left: 0;
+                display: none;
+            }
+
+            .big {
+                width: 450px;
+                height: 450px;
+                border: 1px solid #aaa;
+                position: absolute;
+                left: 500px;
+                top: 0;
+                overflow: hidden;
+                display: none;
+            }
+
+            .big > img {
+                width: 900px;
+                height: 900px;
+                position: absolute;
+            }
+        </style>
+    </head>
+    <body>
+        <!-- 放大镜 -->
+        <div class="box">
+            <div class="small">
+                <img src="./images1/s.jpg" alt="" />
+                <div class="mask"></div>
+            </div>
+            <div class="big">
+                <img src="./images1/big.jpg" alt="" />
+            </div>
+        </div>
+    </body>
+    <script>
+        /* 主要是3个功能：1和2分别是移入显示，移出消失。3是鼠标在元素内移动的时候，mask和一旁的大图跟着移动 */
+        // 获取元素
+        let box = document.querySelector(".box");
+        let small = document.querySelector(".small");
+        let mask = document.querySelector(".mask");
+        let big = document.querySelector(".big");
+        let bigImg = document.querySelector(".big > img");
+
+        // 鼠标移入显示和鼠标移出消失
+        small.addEventListener("mouseover", function() {
+            mask.style.display = "block";
+            big.style.display = "block";
+        });
+        small.addEventListener("mouseout", function() {
+            mask.style.display = "none";
+            big.style.display = "none";
+        });
+
+        // 鼠标在small上移动的时候，mask和big的相对位置也会移动
+        small.addEventListener("mousemove", function(e) {
+            /* 
+                要跟着移动，首先要计算相应的位置，
+                老师给出的办法是：mask当前位置：mask最大可移动位置= big的当前位置：big最大可移动位置
+            */
+            // 首先是计算mask的位置，那么需要先计算鼠标的位置和box或者是small的位置，还有mask的大小
+            let x = e.pageX;
+            let y = e.pageY;
+
+            let boxLeft = box.offsetLeft;
+            let boxTop = box.offsetTop;
+
+            let maskWidth = mask.clientWidth;
+            let maskHeight = mask.clientHeight;
+
+            let maskX = x - boxLeft - maskWidth / 2;
+            let maskY = y - boxTop - maskHeight / 2;
+            // mask的位置最小不能到small外面去
+            maskX = maskX < 0 ? 0 : maskX;
+            maskY = maskY < 0 ? 0 : maskY;
+            // mask的位置最大不能大于mask的最大位置
+            maskMaxX = small.clientWidth - maskWidth;
+            maskMaxY = small.clientHeight - maskHeight;
+            maskX = maskX > maskMaxX ? maskMaxX : maskX;
+            maskY = maskY > maskMaxY ? maskMaxY : maskY;
+            // 到现在mask的位置值算是设定好了
+            mask.style.left = maskX + "px";
+            mask.style.top = maskY + "px";
+            // ↑ end mask位置
+            // 计算big的显示位置，根据老师的公式：mask当前位置：mask最大可移动位置= bigImg的当前位置：bigImg最大可移动位置
+            // 先计算big的最大可移动位置
+            let bigImgMaxX = bigImg.clientWidth- big.clientWidth;
+            let bigImgMaxY = bigImg.clientHeight-big.clientHeight;
+
+            let bigImgX = maskX*bigImgMaxX/maskMaxX;
+            let bigImgY = maskY*bigImgMaxY/maskMaxY;
+
+            bigImg.style.left= -bigImgX+"px";
+            bigImg.style.top = -bigImgY+"px";
+        });
+    </script>
+</html>

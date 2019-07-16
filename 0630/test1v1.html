@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>元奭</title>
+    <style>
+        .box {
+            width: 800px;
+            margin: 50px auto;
+        }
+        img {
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <input type="button" value="图片1">
+        <input type="button" value="图片2">
+        <input type="button" value="图片3">
+        <input type="button" value="图片4">
+        <input type="button" value="图片5">
+        <img src="./images/01.jpg" alt="" id="img">
+    </div>
+</body>
+<script>
+    let btns = document.getElementsByTagName('input');
+    let img = document.getElementById('img');
+    for(let i = 0; i<btns.length;i++) {
+        btns[i].onclick= function(){
+            img.src = './images/0'+(i+1)+'.jpg';
+        }
+    }
+</script>
+</html>

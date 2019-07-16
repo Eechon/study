@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>元奭</title>
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+            }
+            table {
+                border-collapse: collapse;
+                border-spacing: 0;
+                border: 1px solid #c0c0c0;
+                width: 500px;
+                margin: 100px auto;
+                text-align: center;
+            }
+            th {
+                background-color: #09c;
+                font: bold 16px "微软雅黑";
+                color: #fff;
+                height: 24px;
+            }
+            td {
+                border: 1px solid #d0d0d0;
+                color: #404060;
+                padding: 10px;
+            }
+        </style>
+    </head>
+    <body>
+        <table>
+            <tr>
+                <th>
+                    <input type="checkbox" name="" id="checkAll" />全选/全不选
+                </th>
+                <th>菜名</th>
+                <th>商家</th>
+                <th>价格</th>
+            </tr>
+            <tr>
+                <td>
+                    <input type="checkbox" name="check" class="ck" checked='checked'/>
+                </td>
+                <td>红烧肉</td>
+                <td>隆江猪脚饭</td>
+                <td>￥200</td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="checkbox" name="check" class="ck" />
+                </td>
+                <td>香酥排骨</td>
+                <td>隆江猪脚饭</td>
+                <td>￥998</td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="checkbox" name="check" class="ck" />
+                </td>
+                <td>北京烤鸭</td>
+                <td>隆江猪脚饭</td>
+                <td>￥88</td>
+            </tr>
+        </table>
+    </body>
+    <script>
+        let checkAll = document.getElementById('checkAll');
+        let cks = document.getElementsByClassName('ck');
+
+        // 当点击全选的时候，其他所有选项都和其一样
+        checkAll.onclick= function(){
+            let status = this.checked;
+            for(let i = 0;i<cks.length;i++){
+                cks[i].checked = status;
+            }
+        }
+
+        //当全部被选的时候是，全选要选上。即：当有一个没有被选就不用选。也就是每点击一次cks中的框，都要遍历一遍。
+        for(let i=0;i<cks.length;i++){
+            cks[i].onclick = function(){
+                let flag = true;
+                for(let j = 0;j<cks.length;j++){
+                    if(!cks[j].checked){
+                        // 这里是由：cks[j].checked === false 升级的，
+                        flag = false;
+                        break;
+                    }
+                }
+                checkAll.checked = flag;
+                // checked的属性是跟boolean 一样的；
+            }
+        }
+    </script>
+</html>

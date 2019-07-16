@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>元奭</title>
+    </head>
+    <body>
+        <!-- 冒泡最终实现 -->
+    </body>
+    <script>
+        /* 从大到小排列 */
+        function sort(arr) {
+            let count = 0;
+            for (let i = 0; i < arr.length; i++) {
+                let flag = false; //开始默认已经排序好了
+                count++;
+                for (let j = 0; j < arr.length - i; j++) {
+                    if (arr[j] < arr[j + 1]) {
+                        let temp = arr[j];
+                        arr[j] = arr[j + 1];
+                        arr[j + 1] = temp;
+                        flag = true;
+                    }
+                }
+                if (!flag) {
+                    console.log(count);
+                    break;
+                }
+            }
+            return arr;
+        }
+        let test = [44, 33, 22, 55, 99, 88, 77, 11, 66];
+        console.log(sort(test));
+
+        /* 
+            怎么验证这种方法减少了次数呢？
+            设置一个计数器
+         */
+    </script>
+</html>

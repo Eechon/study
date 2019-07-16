@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .wrapper {
+            width: 1000px;
+            height: 475px;
+            margin: 0 auto;
+            margin-top: 100px;
+        }
+
+        .tab {
+            border: 1px solid #ddd;
+            border-bottom: 0;
+            height: 36px;
+            width: 320px;
+        }
+
+        .tab li {
+            position: relative;
+            float: left;
+            width: 80px;
+            height: 34px;
+            line-height: 34px;
+            text-align: center;
+            cursor: pointer;
+            border-top: 4px solid #fff;
+        }
+
+        .tab span {
+            position: absolute;
+            right: 0;
+            top: 10px;
+            background: #ddd;
+            width: 1px;
+            height: 14px;
+            overflow: hidden;
+        }
+
+        .products {
+            width: 1002px;
+            border: 1px solid #ddd;
+            height: 476px;
+        }
+
+        .products .main {
+            float: left;
+            display: none;
+        }
+
+        .products .main.selected {
+            display: block;
+        }
+
+        .tab li.active {
+            border-color: red;
+            border-bottom: 0;
+        }
+    </style>
+    <script>
+        // 浏览器加载事件
+        window.addEventListener("load", function () {
+            // 1. 查找元素
+            // All 查找全部元素
+            var tabItems = document.querySelectorAll(".tab-item");
+            var mains = document.querySelectorAll(".main");
+            
+            // 2. 添加事件，涉及到多个元素，所以我们需要遍历添加
+            for (var i = 0; i < tabItems.length; i++) {
+                // 2.1 给所有元素添加鼠标移入事件
+                tabItems[i].addEventListener("mouseover", function () {
+                    // 3.1 切换选项卡
+                    // 3.1.1 排除所有
+                    for (var i = 0; i < tabItems.length; i++) {
+                        // 1.1 把所有选项卡的 active 类名先清除掉
+                        tabItems[i].classList.remove("active");
+                    }
+                    // 3.1.2. 确立当前，给当前点击的元素添加 active 类名
+                    this.classList.add("active");
+
+                    // 3.2 切换商品
+                    // 3.2.1 移除所有商品的类名
+                    for(var i=0; i < mains.length; i++){
+                        // 移除类名，隐藏所有盒子
+                        mains[i].classList.remove("selected");
+                    }
+                    // 3.2.2 确立一个，怎么把选项卡和商品对应起来
+                    // 1) 获取当前 li 标签存放的 自定义索引值
+                    var index = this.dataset.index;
+                    // console.log(index);
+                    // 2) 根据索引值给第几个 商品分区添加 selected 类名，添加类名盒子就可以显示
+                    mains[index].classList.add("selected");
+
+                });
+            }
+        });
+
+    </script>
+</head>
+
+<body>
+    <div class="wrapper">
+        <!-- tab栏 选项卡部分 -->
+        <ul class="tab">
+            <!-- 给每一个 li 添加索引值的自定义属性，目的为了切换对应的分区 -->
+            <li data-index="0" class="tab-item active">国际大牌</li>
+            <li data-index="1" class="tab-item">国妆名牌</li>
+            <li data-index="2" class="tab-item">清洁用品</li>
+            <li data-index="3" class="tab-item">男士精品</li>
+        </ul>
+        <!-- tab栏 内容部分 -->
+        <div class="products">
+            <div class="main selected">
+                <a href="###"><img src="images/guojidapai.jpg" alt="" /></a>
+            </div>
+            <div class="main">
+                <a href="###"><img src="images/guozhuangmingpin.jpg" alt="" /></a>
+            </div>
+            <div class="main">
+                <a href="###"><img src="images/qingjieyongpin.jpg" alt="" /></a>
+            </div>
+            <div class="main">
+                <a href="###"><img src="images/nanshijingpin.jpg" alt="" /></a>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

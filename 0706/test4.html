@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>元奭</title>
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+            }
+
+            .box {
+                width: 450px;
+                height: 450px;
+                border: 1px solid #aaa;
+                position: relative;
+                top: 100px;
+                left: 100px;
+            }
+
+            .small {
+                width: 450px;
+                height: 450px;
+                position: absolute;
+            }
+
+            .mask {
+                position: absolute;
+                background-color: rgba(255, 255, 0, 0.3);
+                width: 225px;
+                height: 225px;
+                top: 0;
+                left: 0;
+                display: none;
+            }
+
+            .big {
+                width: 450px;
+                height: 450px;
+                border: 1px solid #aaa;
+                position: absolute;
+                left: 500px;
+                top: 0;
+                overflow: hidden;
+                display: none;
+            }
+
+            .big > img {
+                width: 900px;
+                height: 900px;
+                position: absolute;
+            }
+        </style>
+    </head>
+    <body>
+        <!-- 放大镜 -->
+        <div class="box">
+            <div class="small">
+                <img src="./images1/s.jpg" alt="" />
+                <div class="mask"></div>
+            </div>
+            <div class="big">
+                <img src="./images1/big.jpg" alt="" />
+            </div>
+        </div>
+    </body>
+    <script>
+        // 获取变量
+        let small = document.querySelector(".small");
+        let mask = document.querySelector(".mask");
+        let big = document.querySelector(".big");
+        let box = document.querySelector(".box");
+        let bigImg = document.querySelector(".big>img");
+
+        // 首先添加鼠标移入显示mask和big
+        small.onmouseover = function() {
+            mask.style.display = "block";
+            big.style.display = "block";
+        };
+
+        // 鼠标移出不显示mask和big
+        small.onmouseout = function() {
+            mask.style.display = "none";
+            big.style.display = "none";
+        };
+
+        // 鼠标移动mask跟着移动
+        small.onmousemove = function(e) {
+            // 鼠标的位置
+            let x = e.pageX;
+            let y = e.pageY;
+            // 框框的位置，这里有特殊，box和small重合的
+            let offsetLeft = box.offsetLeft;
+            let offsetTop = box.offsetTop;
+            // mask宽高的一半
+            let halfWidth = mask.offsetWidth / 2;
+            let halfHeight = mask.offsetHeight / 2;
+            //得出mask的位置
+            let maskX = x - offsetLeft - halfWidth;
+            let maskY = y - offsetTop - halfHeight;
+            // 约束mask的移动位置，不让mask出了small框框
+            // 约束最小值，
+            if (maskX < 0) {
+                maskX = 0;
+            }
+            if (maskY < 0) {
+                maskY = 0;
+            }
+            // 约束最大值
+            let maskMaxX = small.clientWidth - mask.offsetWidth;
+            let maskMaxY = (small.clientHeight = mask.offsetHeight);
+            if (maskX > maskMaxX) {
+                maskX = maskMaxX;
+            }
+            if (maskY > maskMaxY) {
+                maskY = maskMaxY;
+            }
+            // 最后一步：把设定好的位置给mask;
+            mask.style.left = maskX + "px";
+            mask.style.top = maskY + "px";
+
+            // 实现图片的放大效果
+            /*
+            图片的放大效果其实不是真的放大效果,而是有两张图,一张是大图且清晰一点.
+            通过成比例的移动来实现所谓的放大效果
+
+            比例相同来,来实现同步位移到图片的同一位置
+            mask的当前位置:mask的最大移动距离 = 大图的当前位置：大图的最大移动距离
+            得出：
+            大图的当前位置 = mask的当前位置*大图的最大移动距离/mask的最大移动距离
+            */
+            //  先求大图的最大移动距离 = 大图的宽高-big盒子的宽高
+            let bigImgMaxX = bigImg.offsetWidth - big.offsetWidth;
+            let bigImgMaxY = bigImg.offsetHeight - big.offsetHeight;
+
+            // 大图的当前位置
+            let bigImgX = (maskX * bigImgMaxX) / maskMaxX;
+            let bigImgY = (maskY * bigImgMaxY) / maskMaxY;
+
+            // 把求出的位置设置给大图，这里需要注意的是，mask往下移动的时候，大图是往上移动的。所以这里的值是负数
+            bigImg.style.left = -bigImgX + "px";
+            bigImg.style.top = -bigImgY + "px";
+        };
+    </script>
+</html>

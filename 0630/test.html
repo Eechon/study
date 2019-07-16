@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>元奭</title>
+</head>
+<body>
+    <input type="button" value="开灯" id="btn_open">
+    <input type="button" value="关灯" id="btn_close">
+    <input type="button" value="关灯" id="btn">
+</body>
+<script>
+    /* var btn=document.getElementById('btn');
+    console.log(btn); */
+
+    var btn_open=document.getElementById('btn_open');
+    var btn_close = document.getElementById('btn_close');
+    var btn = document.getElementById('btn');
+
+    console.log(btn_open);
+    console.log(btn_close);
+
+    btn_open.onclick = function(){
+        /* var body = document.getElementById('body');
+        body.style.backgroundColor = 'red'; */
+        document.body.style.backgroundColor = 'red';
+    }
+    btn.onclick = function(){
+        if(btn.value === '关灯'){
+            document.body.style.backgroundColor = '#000';
+            btn.value = '开灯';
+        }else {
+            document.body.style.backgroundColor = '#fff';
+            btn.value = '关灯'
+        }
+    }
+</script>
+</html>

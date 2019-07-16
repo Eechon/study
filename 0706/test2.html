@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>元奭</title>
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+            }
+
+            ul {
+                list-style: none;
+            }
+
+            .box {
+                width: 730px;
+                height: 454px;
+                padding: 8px;
+                border: 1px solid green;
+                margin: 100px auto;
+            }
+
+            .inner {
+                position: relative;
+                overflow: hidden;
+                height: 454px;
+            }
+
+            #imglist {
+                width: 700%;
+                position: absolute;
+                left: 0;
+                transition: left 300ms linear;
+            }
+
+            li {
+                float: left;
+            }
+
+            .list {
+                position: absolute;
+                bottom: 20px;
+                left: 50%;
+                margin-left: -85px;
+            }
+
+            .list i {
+                width: 20px;
+                height: 20px;
+                border-radius: 50%;
+                background-color: #fff;
+                color: #333;
+                float: left;
+                font-style: normal;
+                line-height: 20px;
+                font-size: 14px;
+                text-align: center;
+                margin-right: 10px;
+                cursor: pointer;
+            }
+
+            .list i:last-child {
+                margin-right: 0;
+            }
+
+            .list i.current {
+                background-color: skyblue;
+                color: #fff;
+            }
+
+            .arrow {
+                position: absolute;
+                width: 100%;
+                top: 50%;
+                margin-top: -30px;
+            }
+
+            .arrow-left,
+            .arrow-right {
+                width: 30px;
+                height: 60px;
+                position: absolute;
+                font: 20px/60px "consolas";
+                color: #fff;
+                background-color: rgba(0, 0, 0, 0.3);
+                text-align: center;
+                cursor: pointer;
+            }
+
+            .arrow-right {
+                right: 0;
+            }
+        </style>
+    </head>
+    <body>
+        <!-- 轮播图 -->
+        <div class="box" id="box">
+            <div class="inner" id="inner">
+                <ul id="imglist">
+                    <li>
+                        <a href="#"><img src="images/1.jpg" alt=""/></a>
+                    </li>
+                    <li>
+                        <a href="#"><img src="images/2.jpg" alt=""/></a>
+                    </li>
+                    <li>
+                        <a href="#"><img src="images/3.jpg" alt=""/></a>
+                    </li>
+                    <li>
+                        <a href="#"><img src="images/4.jpg" alt=""/></a>
+                    </li>
+                    <li>
+                        <a href="#"><img src="images/5.jpg" alt=""/></a>
+                    </li>
+                    <li>
+                        <a href="#"><img src="images/6.jpg" alt=""/></a>
+                    </li>
+                </ul>
+                <div class="list">
+                    <i class="current">1</i>
+                    <i>2</i>
+                    <i>3</i>
+                    <i>4</i>
+                    <i>5</i>
+                    <i>6</i>
+                </div>
+                <div class="arrow">
+                    <span class="arrow-left">&lt;</span>
+                    <span class="arrow-right">&gt;</span>
+                </div>
+            </div>
+        </div>
+    </body>
+    <script>
+        window.onload = function() {
+            let circles = document.querySelectorAll(".list>i");
+            let ul = document.querySelector("#imglist");
+            // 需要获取图片宽度
+            let img = document.querySelector("#imglist img");
+            // 当前图片索引，可以通过控制这个，打到切换的效果
+            let currentImageIndex = 0;
+            // 获取向前向后按钮
+            let btnRight = document.querySelector(".arrow-right");
+            let btnLeft = document.querySelector(".arrow-left");
+
+            // 向右按钮功能
+            btnRight.onclick = function() {
+                if (currentImageIndex === ul.children.length - 1) {
+                    currentImageIndex = 0;
+                } else {
+                    currentImageIndex++;
+                }
+                let target = currentImageIndex * img.offsetWidth * -1;
+                ul.style.left = target + "px";
+                // 在点击了右边按钮之后，出了图片要改变之外，小圆点也是要变化的
+                circles.forEach(e => {
+                    e.classList.remove("current");
+                });
+                circles[currentImageIndex].classList.add("current");
+            };
+
+            // 向左按钮功能，同向按钮
+            btnLeft.onclick = function() {
+                if (currentImageIndex === 0) {
+                    currentImageIndex = ul.children.length - 1;
+                } else {
+                    currentImageIndex--;
+                }
+
+                let target = currentImageIndex * img.offsetWidth * -1;
+                ul.style.left = target + "px";
+
+                circles.forEach(e => {
+                    e.classList.remove("current");
+                });
+                circles[currentImageIndex].classList.add("current");
+            };
+
+            //自动轮播功能
+            // 设置定时器，每个一段时间就触发一下向右按钮
+            let timerId = setInterval(() => {
+                btnRight.onclick();
+            }, 1500);
+
+            //鼠标移入移除，暂停和回复轮播功能
+            // 实际上是把定时器清除和回复
+            // 这个事件是建立在box框框上的
+            let box = document.querySelector("#box");
+            box.onmouseover = () => {
+                clearInterval(timerId);
+            };
+            // 鼠标移除，又把定时器给设置回去
+            box.onmouseout = () => {
+                timerId = setInterval(() => {
+                    btnRight.onclick();
+                }, 1500);
+            };
+
+            // 序号轮播功能
+            circles.forEach((e, i) => {
+                e.onmouseover = function() {
+                    // 计算ul向左边移动的距离
+                    let target = i * img.offsetWidth * -1;
+                    ul.style.left = target + "px";
+                    circles.forEach(e => {
+                        e.classList.remove("current");
+                    }); /* end forEach */
+                    this.classList.add("current");
+
+                    // 同步当前下标
+                    currentImageIndex = i;
+                };
+            }); /* end forEach */
+        }; /* end onload */
+    </script>
+</html>

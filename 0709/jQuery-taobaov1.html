@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>元奭</title>
+  <style type="text/css">
+    * {
+        margin: 0;
+        padding: 0;
+        font-size: 12px;
+    }
+    ul {
+        list-style: none;
+    }
+    a {
+        text-decoration: none;
+    }
+
+    .wrapper {
+        width: 298px;
+        height: 248px;
+        margin: 100px auto 0;
+        border: 1px solid pink;
+        overflow: hidden;
+    }
+    #left,#center,#right{
+        float: left;
+    }
+    #left li , #right li{
+        background: url(images1/lili.jpg) repeat-x;
+    }
+    #left li a,#right li a{
+        display: block;
+        width: 48px;
+        height: 27px;
+        border-bottom: 1px solid pink;
+        line-height: 27px;
+        text-align: center;
+        color: black;
+    }
+    #left li a:hover,#right li a:hover{
+        background-image: url(images1/abg.gif);
+    }
+    #center {
+        border-left: 1px solid pink;
+        border-right: 1px solid pink;
+    }
+</style>
+</head>
+<body>
+  <!-- 淘宝商品切换 -->
+  <div class="wrapper">
+
+      <ul id="left">
+          <li><a href="#">女靴</a></li>
+          <li><a href="#">雪地靴</a></li>
+          <li><a href="#">冬裙</a></li>
+          <li><a href="#">呢大衣</a></li>
+          <li><a href="#">毛衣</a></li>
+          <li><a href="#">棉服</a></li>
+          <li><a href="#">女裤</a></li>
+          <li><a href="#">羽绒服</a></li>
+          <li><a href="#">牛仔裤</a></li>
+      </ul>
+      <ul id="center">
+          <li><a href="#"><img src="images1/女靴.jpg" width="200" height="250"/></a></li>
+          <li><a href="#"><img src="images1/雪地靴.jpg" width="200" height="250"/></a></li>
+          <li><a href="#"><img src="images1/冬裙.jpg" width="200" height="250"/></a></li>
+          <li><a href="#"><img src="images1/呢大衣.jpg" width="200" height="250"/></a></li>
+          <li><a href="#"><img src="images1/毛衣.jpg" width="200" height="250"/></a></li>
+          <li><a href="#"><img src="images1/棉服.jpg" width="200" height="250"/></a></li>
+          <li><a href="#"><img src="images1/女裤.jpg" width="200" height="250"/></a></li>
+          <li><a href="#"><img src="images1/羽绒服.jpg" width="200" height="250"/></a></li>
+          <li><a href="#"><img src="images1/牛仔裤.jpg" width="200" height="250"/></a></li>
+          <li><a href="#"><img src="images1/女包.jpg" width="200" height="250"/></a></li>
+          <li><a href="#"><img src="images1/男包.jpg" width="200" height="250"/></a></li>
+          <li><a href="#"><img src="images1/登山鞋.jpg" width="200" height="250"/></a></li>
+          <li><a href="#"><img src="images1/皮带.jpg" width="200" height="250"/></a></li>
+          <li><a href="#"><img src="images1/围巾.jpg" width="200" height="250"/></a></li>
+          <li><a href="#"><img src="images1/皮衣.jpg" width="200" height="250"/></a></li>
+          <li><a href="#"><img src="images1/男毛衣.jpg" width="200" height="250"/></a></li>
+          <li><a href="#"><img src="images1/男棉服.jpg" width="200" height="250"/></a></li>
+          <li><a href="#"><img src="images1/男靴.jpg" width="200" height="250" /></a></li>
+      </ul>
+      <ul id="right">
+          <li><a href="#">女包</a></li>
+          <li><a href="#">男包</a></li>
+          <li><a href="#">登山鞋</a></li>
+          <li><a href="#">皮带</a></li>
+          <li><a href="#">围巾</a></li>
+          <li><a href="#">皮衣</a></li>
+          <li><a href="#">男毛衣</a></li>
+          <li><a href="#">男棉服</a></li>
+          <li><a href="#">男靴</a></li>
+      </ul>
+  
+  </div>
+</body>
+<script src="./jquery.js"></script>
+<script>
+  $(()=>{
+    $("#right>li,#left>li").on("mousemove",function(){
+      // 这里获取元素的时候right前还是left在前面并没有影响获取li的index
+      $("#center>li").eq($("#right>li,#left>li").index(this)).show().siblings().hide();
+    });
+  });
+</script>
+</html>

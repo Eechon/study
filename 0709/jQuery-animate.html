@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>元奭</title>
+    <style>
+      .box {
+        width: 322px;
+        position: fixed;
+        bottom: 0;
+        right: 0;
+        overflow: hidden;
+      }
+
+      span {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 30px;
+        height: 20px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 动画 -->
+    <div class="box" id="box">
+      <span id="closeButton"></span>
+      <div class="hd" id="headPart">
+        <img src="images/t.jpg" alt="" />
+      </div>
+      <div class="bd" id="bottomPart">
+        <img src="images/b.jpg" alt="" />
+      </div>
+    </div>
+  </body>
+  <script src="./jquery.js"></script>
+  <script>
+    $(()=>{
+      $("#closeButton").on("click",function(){
+        $("#bottomPart").animate({height:0},1000,function(){
+          $("#box").animate({width:0},1000);
+        });
+      });
+    });
+  </script>
+</html>

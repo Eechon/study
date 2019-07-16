@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>元奭</title>
+</head>
+<body>
+    <!-- 打印九九乘法表 -->
+</body>
+<script>
+    // i控制第几列，j控制第几竖
+    for(let i = 1;i<=9;i++){
+        for(let j =1;j<=i;j++){
+            document.write(j+' x '+i+'='+(i*j)+' &nbsp;&nbsp;');
+        }
+        document.write('<br>');
+    }
+
+    /* 
+    1x1=1
+    1x2=2 2x2=4
+    1x3=3 2x3=6 3x3=9
+    j在前，i在后，i一轮循环完了换行，当j=i时，j循环结束
+     */
+</script>
+</html>

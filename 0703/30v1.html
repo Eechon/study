@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>元奭</title>
+    </head>
+    <body>
+        <!-- 冒泡排序从大到小 -->
+        <!-- 加上一个判定：如果这轮没有元素之间的交换，可以直接判断已经排序好了，可以跳出循环了 -->
+    </body>
+    <script>
+        let test = [44, 33, 22, 55, 99, 88, 77, 11, 66];
+        function sort(arr) {
+            // i控制第几轮循环，j控制数的交换
+            // 把小的数往后冒泡，如果前一个数小于后一个数，就对调
+            for (let i = 0; i < arr.length; i++) {
+                let flag = false; //默认如果没有元素调换，就是已经排序好的了；每次j循环开始前重置flag
+                for (let j = 0; j < arr.length - i; j++) {
+                    if (arr[j] < arr[j + 1]) {
+                        flag = true; //如果有元素调换发生，就改变flag
+                        let temp = arr[j];
+                        arr[j] = arr[j + 1];
+                        arr[j + 1] = temp;
+                        /* if(!flag){
+                            return arr;
+                        } */
+                        // 这里放不了return，可能是因为不能在循环中的循环给返回
+                    }
+                }
+                if (!flag) {
+                    //说明没有发生调换，此时可以直接return arr。
+                    return arr;
+                    // break;
+                }
+            }
+            return arr;
+        }
+
+        // 验证代码
+        console.log(sort(test));
+        /* 首先先写出冒泡的代码 */
+    </script>
+</html>

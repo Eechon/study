@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>元奭</title>
+    </head>
+    <body>
+        <!-- 老师给的参考 -->
+    </body>
+    <script>
+        // 转换前
+        var str = "get,element,by,id";
+        // 转换后
+        console.log(getTf(str));
+        // 函数封装
+        function getTf(str) {
+            // 把字符串按照，分割成数组。
+            var arr = str.split(",");
+
+            // 对数组进行循环遍历
+
+            // 创建一个改变后的新的空数组
+            var newArr = [];
+            arr.forEach(function(value, index) {
+                if (index != 0) {
+                    // 首字母字母大写
+                    var firstLetter = value[0].toUpperCase();
+                    // 剩下的字母
+                    var leftLetter = value.slice(1);
+                    // 拼接成一个新的字符串
+                    value = firstLetter + leftLetter;
+                }
+            });
+            // 把数组按''转换成字符串
+            return arr.join('');
+        }
+        /* 
+        我现在想的是：把老师的改成不需格外的数组空间
+        结论:不行，foreach不行
+         */
+    </script>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>元奭</title>
+</head>
+<body>
+    <!-- 编写一个函数，将如下字符串'get-element-by-id'修改为驼峰表示法'getElementById' -->
+    <!-- 
+        1.split()分割成字符串数组
+        2.提取第一个字符，转化成大写
+        3.提取后面的字符，和大写字符拼成“首字符大写的单词”
+        4.把各个单词拼接起来
+     -->
+</body>
+<script>
+    function fn(str){
+        // 用split()分割字符串
+        let arr = str.split('-');
+        // 用一个值存储提取出来的首字母
+        let initial = '';
+        let withoutInitial = '';
+        for(let i =1;i<arr.length;i++){
+            // 转化成大写
+            initial = arr[i].substr(0,1);
+            initial = initial.toUpperCase();
+            // 提取出首字母之外的字符
+            withoutInitial = arr[i].substr(1);
+            // 将处理过之后的首字符和其他字符拼接
+            arr[i]=initial+withoutInitial;
+        }
+        // 字符串数组中的元素已经经过处理了。将其拼接成一个字符串
+        let last = arr.join('');
+        return last;
+    }
+    let str = 'get-element-by-id';
+    console.log(fn(str));
+</script>
+</html>

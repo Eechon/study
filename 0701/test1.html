@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>元奭</title>
+        <style>
+            .login-header {
+                width: 100%;
+                text-align: center;
+                height: 30px;
+                font-size: 24px;
+                line-height: 30px;
+            }
+            ul,
+            li,
+            ol,
+            dl,
+            dt,
+            dd,
+            div,
+            p,
+            span,
+            h1,
+            h2,
+            h3,
+            h4,
+            h5,
+            h6,
+            a {
+                padding: 0px;
+                margin: 0px;
+            }
+            .login {
+                width: 512px;
+                position: absolute;
+                border: #ebebeb solid 1px;
+                height: 280px;
+                left: 50%;
+                right: 50%;
+                background: #ffffff;
+                box-shadow: 0px 0px 20px #ddd;
+                z-index: 9999;
+                margin-left: -250px;
+                margin-top: 140px;
+                /*display: none;*/
+            }
+            .login-title {
+                width: 100%;
+                margin: 10px 0px 0px 0px;
+                text-align: center;
+                line-height: 40px;
+                height: 40px;
+                font-size: 18px;
+                position: relative;
+                cursor: move;
+                -moz-user-select: none; /*火狐*/
+                -webkit-user-select: none; /*webkit浏览器*/
+                -ms-user-select: none; /*IE10*/
+                -khtml-user-select: none; /*早期浏览器*/
+                user-select: none;
+            }
+            .login-input-content {
+                margin-top: 20px;
+            }
+            .login-button {
+                width: 50%;
+                margin: 30px auto 0px auto;
+                line-height: 40px;
+                font-size: 14px;
+                border: #ebebeb 1px solid;
+                text-align: center;
+            }
+            .login-bg {
+                width: 100%;
+                height: 100%;
+                position: fixed;
+                top: 0px;
+                left: 0px;
+                background: #000000;
+                filter: alpha(opacity=30);
+                -moz-opacity: 0.3;
+                -khtml-opacity: 0.3;
+                opacity: 0.3;
+                display: none;
+            }
+            a {
+                text-decoration: none;
+                color: #000000;
+            }
+            .login-button a {
+                display: block;
+            }
+            .login-input input.list-input {
+                float: left;
+                line-height: 35px;
+                height: 35px;
+                width: 350px;
+                border: #ebebeb 1px solid;
+                text-indent: 5px;
+            }
+            .login-input {
+                overflow: hidden;
+                margin: 0px 0px 20px 0px;
+            }
+            .login-input label {
+                float: left;
+                width: 90px;
+                padding-right: 10px;
+                text-align: right;
+                line-height: 35px;
+                height: 35px;
+                font-size: 14px;
+            }
+            .login-title span {
+                position: absolute;
+                font-size: 12px;
+                right: -20px;
+                top: -30px;
+                background: #ffffff;
+                border: #ebebeb solid 1px;
+                width: 40px;
+                height: 40px;
+                border-radius: 20px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="login-header">
+            <a id="link" href="javascript:void(0);">点击，弹出登录框</a>
+        </div>
+        <div id="login" class="login">
+            <div id="title" class="login-title">
+                登录会员
+                <span
+                    ><a
+                        id="closeBtn"
+                        href="javascript:void(0);"
+                        class="close-login"
+                        >关闭</a
+                    ></span
+                >
+            </div>
+            <div class="login-input-content">
+                <div class="login-input">
+                    <label>用户名：</label>
+                    <input
+                        type="text"
+                        placeholder="请输入用户名"
+                        name="info[username]"
+                        id="username"
+                        class="list-input"
+                    />
+                </div>
+                <div class="login-input">
+                    <label>登录密码：</label>
+                    <input
+                        type="password"
+                        placeholder="请输入登录密码"
+                        name="info[password]"
+                        id="password"
+                        class="list-input"
+                    />
+                </div>
+            </div>
+            <div id="loginBtn" class="login-button">
+                <a href="javascript:void(0);" id="login-button-submit"
+                    >登录会员</a
+                >
+            </div>
+        </div>
+        <div id="bg" class="login-bg"></div>
+    </body>
+    <script>
+        // 需要登录框跟着移动，首先要获取点着能跟着移动的title
+        // 其次需要获取整个登录框，在点住之后跟着移动
+
+        // 行为有三种，
+        // 1.鼠标按下之后，登录框能跟着动了
+        // 2.鼠标移动，登录框跟着移动
+        // 3.鼠标弹起，登录框不跟着移动了
+
+        // 获取元素
+        let title = document.getElementById("title");
+        let login = document.querySelector("#login");
+        // 设定一个状态值
+        let isDrag = false; //初始不能拖拽
+        // 差值记录
+        let tempX = 0;
+        let tempY = 0;
+
+        // 鼠标按下，记录鼠标与登录框的差值
+        title.onmousedown = function(e) {
+            // 按下之后，登录框可以移动了
+            isDrag = true;
+            tempX = e.pageX - login.offsetLeft;
+            tempY = e.pageY - login.offsetTop;
+        };
+
+        //鼠标移动，登录框跟着移动
+        document.addEventListener("mousemove", function(e) {
+            // 如果状态值告诉你可以移动
+            if (isDrag) {
+                // 通过修改登录框的css属性top和left，来实现登录框跟着移动
+                login.style.left = e.pageX - tempX + 250 + "px";
+                login.style.top = e.pageY - tempY - 140 + "px";
+            }
+        }); /* end listener */
+        /* 
+            PS:如果鼠标移动，登录框跟着移动是绑定在登录框上的，万一鼠标移动太快，出了登录框，这个行为就是失效了
+         */
+        // 鼠标弹起，将状态改成不能移动
+        document.addEventListener("mouseup",function(){
+            isDrag=false;
+        });/* end listener */
+    </script>
+</html>

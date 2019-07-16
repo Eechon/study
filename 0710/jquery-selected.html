@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>元奭</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+      }
+      .wrap {
+        width: 300px;
+        margin: 100px auto 0;
+      }
+
+      table {
+        border-collapse: collapse;
+        border-spacing: 0;
+        border: 1px solid #c0c0c0;
+      }
+
+      th,
+      td {
+        border: 1px solid #d0d0d0;
+        color: #404060;
+        padding: 10px;
+      }
+
+      th {
+        background-color: #09c;
+        font: bold 16px "微软雅黑";
+        color: #fff;
+      }
+
+      td {
+        font: 14px "微软雅黑";
+      }
+
+      tbody tr {
+        background-color: #f0f0f0;
+      }
+
+      tbody tr:hover {
+        cursor: pointer;
+        background-color: #fafafa;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 全选和单选 -->
+    <div class="wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>
+              <input type="checkbox" id="j_cbAll" />
+            </th>
+            <th>课程名称</th>
+            <th>所属学院</th>
+          </tr>
+        </thead>
+        <tbody id="j_tb">
+          <tr>
+            <td>
+              <input type="checkbox" />
+            </td>
+            <td>JavaScript</td>
+            <td>前端与移动开发学院</td>
+          </tr>
+          <tr>
+            <td>
+              <input type="checkbox" />
+            </td>
+            <td>css</td>
+            <td>前端与移动开发学院</td>
+          </tr>
+          <tr>
+            <td>
+              <input type="checkbox" />
+            </td>
+            <td>html</td>
+            <td>前端与移动开发学院</td>
+          </tr>
+          <tr>
+            <td>
+              <input type="checkbox" />
+            </td>
+            <td>jQuery</td>
+            <td>前端与移动开发学院</td>
+          </tr>
+          <!--<tr>
+                  <td><input type="checkbox"/></td>
+                  <td>HTML5</td>
+                  <td>前端与移动开发学院</td>
+              </tr>
+              <tr>
+                  <td><input type="checkbox"/></td>
+                  <td>CSS3</td>
+                  <td>前端与移动开发学院</td>
+              </tr>-->
+        </tbody>
+      </table>
+    </div>
+  </body>
+  <script src="./jquery.js"></script>
+  <script>
+    $(function() {
+      let ckAll = $("#j_cbAll");
+      let cks = $("#j_tb input");
+
+      // 全选如果选上了或全不选上，单选跟随
+      ckAll.on("click",function(){
+        cks.prop("checked",$(this).prop("checked"));
+      });
+
+      // 如果单选全选了，全选也要选上
+      cks.on("click",function(){
+        ckAll.prop("checked",$("#j_tb input:checked").length === cks.length);
+      });
+    });
+  </script>
+</html>

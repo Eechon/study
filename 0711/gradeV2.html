@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>元奭</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+      }
+
+      .comment {
+        font-size: 40px;
+        color: red;
+      }
+
+      .comment li {
+        float: left;
+        cursor: pointer;
+      }
+
+      ul {
+        list-style: none;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 星星评分 -->
+    <ul class="comment">
+      <li>☆</li>
+      <li>☆</li>
+      <li>☆</li>
+      <li>☆</li>
+      <li>☆</li>
+    </ul>
+  </body>
+  <script src="./jquery.js"></script>
+  <script>
+    let lis = $(".comment li");
+    lis.on("mouseover", function() {
+      let index = $(this).index();
+      lis.each((i, e) => {
+        if (i <= index) {
+          $(e).text("★");
+        } else {
+          $(e).text("☆");
+        }
+      });
+    });
+    let score = 0;
+    lis.on("click",function(){
+      score = $(this).index()+1;
+    });
+    lis.on("mouseout",function(){
+      lis.each((i, e) => {
+        if (i < score) {
+          $(e).text("★");
+        } else {
+          $(e).text("☆");
+        }
+      });
+    });
+  </script>
+</html>

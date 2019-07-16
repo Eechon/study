@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>元奭</title>
+    <style type="text/css">
+      * {
+        margin: 0;
+        padding: 0;
+      }
+
+      ul {
+        list-style: none;
+      }
+
+      body {
+        background: #000;
+      }
+
+      .wrap {
+        margin: 100px auto 0;
+        width: 630px;
+        height: 394px;
+        padding: 10px 0 0 10px;
+        background: #000;
+        overflow: hidden;
+        border: 1px solid #fff;
+      }
+
+      .wrap li {
+        float: left;
+        margin: 0 10px 10px 0;
+      }
+
+      .wrap img {
+        display: block;
+        border: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 高亮显示 -->
+    <div class="wrap">
+      <ul>
+        <li>
+          <a href="#"><img src="images1/01.jpg" alt=""/></a>
+        </li>
+        <li>
+          <a href="#"><img src="images1/02.jpg" alt=""/></a>
+        </li>
+        <li>
+          <a href="#"><img src="images1/03.jpg" alt=""/></a>
+        </li>
+        <li>
+          <a href="#"><img src="images1/04.jpg" alt=""/></a>
+        </li>
+        <li>
+          <a href="#"><img src="images1/05.jpg" alt=""/></a>
+        </li>
+        <li>
+          <a href="#"><img src="images1/06.jpg" alt=""/></a>
+        </li>
+      </ul>
+    </div>
+  </body>
+  <script src="./jquery.js"></script>
+  <script>
+    /* 获取单个图片高亮其他暗，二是移出框框全部高亮 */
+    $(() => {
+      $(".wrap li").on("mouseenter", function() {
+        $("this")
+          .css("opacity", 1)
+          .siblings()
+          .css("opacity", 0.3);
+      });
+      $(".wrap").on("mouseleave", function() {
+        $(".wrap li").css("opacity", 1);
+      });
+    });
+  </script>
+</html>

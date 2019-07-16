@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>元奭</title>
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                list-style: none;
+            }
+
+            .weibo {
+                width: 600px;
+                border: 1px solid #ccc;
+
+                margin: 100px auto;
+                padding: 10px;
+            }
+
+            .weibo-text {
+                width: 590px;
+                height: 140px;
+                padding: 5px;
+                border: 1px solid #ccc;
+                outline: none;
+                resize: none;
+            }
+
+            .weibo-text:focus {
+                border-color: #f60;
+            }
+
+            .weibo-btn {
+                width: 80px;
+                height: 30px;
+                background-color: #f90;
+                color: #fff;
+                border: 0 none;
+                margin-top: 5px;
+                border-radius: 3px;
+                cursor: pointer;
+                outline: 0 none;
+            }
+
+            .weibo-list {
+                padding-top: 10px;
+            }
+
+            .weibo-list li {
+                font-size: 14px;
+                line-height: 30px;
+                border-bottom: 1px dotted #ccc;
+                overflow: hidden;
+            }
+
+            .weibo-list li p {
+                float: left;
+            }
+
+            .weibo-list li span {
+                float: right;
+                cursor: pointer;
+            }
+
+            .weibo-list li input {
+                height: 24px;
+                line-height: 24px;
+                width: 300px;
+                font-size: 14px;
+                border: 0 none;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="weibo">
+            <textarea class="weibo-text"></textarea>
+            <input class="weibo-btn" value="发布" type="button" />
+            <ul class="weibo-list">
+                <li>
+                    <p>快来收了这九款用上就停不下来的应用吧！！</p>
+                    <span>删除</span>
+                </li>
+                <li>
+                    <p>超级详细的云南大理自助游攻略</p>
+                    <span>删除</span>
+                </li>
+                <li>
+                    <p>外国最近很火的舞蹈，舒服简单自然，太棒了！</p>
+                    <span>删除</span>
+                </li>
+            </ul>
+        </div>
+    </body>
+    <!-- 引入工具js -->
+    <script src="./kits.js"></script>
+    <script>
+        /* 
+            需要实现的效果：
+            1.点击发布，根据文本框的内容，创建一条评论
+            2.点击删除，删除该条评论
+         */
+        /* 
+            首先实现：点击发布，根据文本框内容，创建一条新的评论；
+            1.获取元素，文本框，发布按钮，评论ul
+            2.发布按钮绑定点击事件，
+            3.文本框获取内容
+            4..ul创建新评论
+         */
+
+        // 获取元素
+        let btn = document.querySelector(".weibo-btn");
+        let text = document.querySelector(".weibo-text");
+        let list = document.querySelector(".weibo-list");
+
+        // 发布按钮绑定点击事件
+        btn.onclick = function() {
+            // 获取文本框内容
+            let content = text.value;
+            // 创建新的li
+            let li = document.createElement("li");
+            // 内容注入li，文本框的内容用value控制，非文本框的内容用innerText控制
+            let time = kits.formateDate(); //得到一个固定格式的当前时间
+            li.innerHTML =
+                '<p clase="content">' +
+                content +
+                "</p>" +
+                '<span class="del">删除</span>' +
+                '<span class="time">' +
+                time +
+                "</span>";
+            //li弄好了，把它加到ul里面去
+            // list.appendChild(li);
+            // insertBefore放到首位子元素
+            list.insertBefore(li, list.children[0]);
+            // 细节处理，将文本框清空
+            text.value = "";
+
+            // 点击的同时需要把数据用JSON存储起来
+            // 首先创建一个对象存储数据，包含内容，时间，id
+            let obj = {
+                // id : kits.primaryKey(),
+                content: content,
+                time: time
+            };
+            // 把构建好的微博数组对象，添加到微博数组里
+            // 这个数组对象哪儿来的暂且放下
+            wbArr.push(obj);
+            // localStorage是不能存储字符串以外的数据，先将数组转化为JSON格式的字符组
+            let jsonStr = JSON.stringify(wbArr);
+            // 把数组存储到localStorage里面
+            localStorage.setItem("wbData", jsonStr);
+        };
+
+        // 开始的时候需要在localStorage中读取之前的评论
+        /* 
+            读取本地数据生成li
+            1.读取数据
+            2.把读出来的数据转化为js的数组
+            3.遍历数组，生成li
+         */
+
+        //  在本地存储中获取数据
+        let jsonStr = localStorage.getItem("weData");
+        // 根据取的数设置数组对象的值
+        let wbArr;
+        if (jsonStr == null) {
+            wbArr = [];
+        } else {
+            wbArr = JSON.parse(jsonStr);
+        }
+        let html = "";
+        // wbArr.foreach(e => {
+        //     // 这里通过JSON.parse已经转成了数组。
+        //     // 使用了箭头函数
+        //     html +=
+        //         "<li>" +
+        //         '<p clase="content">' +
+        //         content +
+        //         '</p>' +
+        //         '<span class="del">删除</span>' +
+        //         '<span class="time">' +
+        //         time +
+        //         "</span>" +
+        //         "</li>";
+        // }); /* end foreach */
+        // 因为是从前面开始插入的，评论的顺序是abc,放进数组是abc, 然后从数组读出来是先读a，在评论的排序上看是cba了
+        // 其实我觉得不应该是push进数组，应该是shift进数组，先进后出
+        // 先按照老师写，老师是在这儿用了for循环
+        /* 
+            评论中：
+            c
+            b
+            a
+            数组中：a,b,c
+            html中：
+            a
+            b
+            c
+            从理解的角度来说，的确是老师做的用for循环从尾部开始输出是比较好的
+            使用shift反而是有点强行了
+         */
+        // 使用for循环输出评论
+        for (let i = wbArr.length - 1; i >= 0; i--) {
+            html =
+                "<li>" +
+                '<p clase="content">' +
+                wbArr.content +
+                "</p>" +
+                '<span class="del">删除</span>' +
+                '<span class="time">' +
+                wbArr.time +
+                "</span>" +
+                "</li>";
+        }
+        // 将拼接好的字符串，放到ul中
+        list.innerHTML = html;
+
+        // 删除微博
+        // 获取元素
+        let delBtns = document.querySelector("span");
+
+        // 给这些span注册点击事件，应该给ul委托点击删除事件，因为有些是后来生成的
+        list.addEventListener =('click',function(e){
+            if (e.target.className === "del") {
+                list.removeChilde(e.target.parentNode);
+                // 获取对应的id
+                let id = e.target.dataset.id;
+                // 删除的过程其实是pull下来，删除了之后再保存回去
+                let jsonStr = localStorage.getItem('wbData');
+                let arr = JSON.parse(jsonStr);
+                // 遍历出对应的数据，删除
+                arr.forEach((e,i) => {
+                    if(id == e.id){
+                        arr.splice(i,1);
+                    }
+                });/* end foreach */
+                // 删除完了之后再上传到本地存储
+                jsonStr = JSON.stringify(arr);
+                localStorage.setItem('wbData',jsonStr);
+            }
+        });/* end listener */
+    </script>
+</html>

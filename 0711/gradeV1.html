@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>元奭</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+      }
+
+      .comment {
+        font-size: 40px;
+        color: red;
+      }
+
+      .comment li {
+        float: left;
+        cursor: pointer;
+      }
+
+      ul {
+        list-style: none;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 星星评分 -->
+    <ul class="comment">
+      <li>☆</li>
+      <li>☆</li>
+      <li>☆</li>
+      <li>☆</li>
+      <li>☆</li>
+    </ul>
+  </body>
+  <script src="./jquery.js"></script>
+  <script>
+    /*
+      星星评分主要有三个功能
+      1.鼠标移入，移入的星星和前面的星星都变红
+      2.鼠标点击，点击的星星和前面的星星都变红，
+      3.鼠标移出，如果点击了就点击的星星和前面的星星都变红，没有点击就恢复到上次的情况
+
+      整理：引入变量记录点击了哪儿，这样点击就负责改变变量，移出就按照变量确定星星变红情况
+    */
+    $(() => {
+      let lis = $(".comment > li");
+      lis.on("mouseover", function() {
+        let index = $(this).index();
+        lis.each((i, e) => {
+          if (i <= index) {
+            $(e).text("★");
+          } else {
+            $(e).text("☆");
+          }
+        });
+      });
+      let score = 0;
+      // 鼠标点击，只改动score
+      lis.on("click", function() {
+        score = $(this).index() + 1;
+      });
+
+      // 鼠标移出，移出的时如果lis内元素index不大于变量index就变红
+      lis.on("mouseout", function() {
+        // let index = $(this).index();
+        lis.each((i, e) => {
+          if (i < score) {
+            $(e).text("★");
+          } else {
+            $(e).text("☆");
+          }
+        });
+      });
+    });
+  </script>
+</html>

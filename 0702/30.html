@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>元奭</title>
+    </head>
+    <body>
+        <!-- 封装一个对数组元素进行冒泡排序的函数（从大到小） -->
+    </body>
+    <script>
+        let test = [44, 33, 22, 55, 99, 88, 77, 11, 66];
+        function sort(arr) {
+            let count = 0;
+            for (let i = 0; i <= arr.length; i++) {
+                count++;
+                for (let j = 0; j < arr.length - i; j++) {
+                    if (arr[j] < arr[j + 1]) {
+                        let temp = arr[j];
+                        arr[j] = arr[j + 1];
+                        arr[j + 1] = temp;
+                    }
+                }
+            }
+            console.log(count);
+            return arr;
+        }
+        console.log(sort(test));
+        /* 
+            当前一个数比后一个数小，就将两数调换，把小的数往后挪，第一轮把最小的数移到了最后。
+            第二轮开始，因为最后一个数是最小的，所以不用再比较了，只需要将前length-1个数比较。
+         */
+    </script>
+</html>

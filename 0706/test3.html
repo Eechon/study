@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>元奭</title>
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+            }
+
+            ul {
+                list-style: none;
+            }
+
+            img {
+                border: 0;
+                vertical-align: top;
+            }
+
+            a,
+            button {
+                cursor: pointer;
+            }
+
+            .wrap {
+                width: 1200px;
+                margin: 100px auto;
+            }
+
+            .slide {
+                height: 500px;
+                position: relative;
+            }
+
+            .slide li {
+                position: absolute;
+                left: 200px;
+                top: 0;
+                transition: all 350ms;
+            }
+
+            .slide li img {
+                width: 100%;
+            }
+
+            .prev,
+            .next {
+                width: 76px;
+                height: 112px;
+                position: absolute;
+                top: 50%;
+                margin-top: -56px;
+                background: url(./images1/prev.png) no-repeat;
+                z-index: 99;
+            }
+
+            .next {
+                right: 0;
+                background-image: url(./images1/next.png);
+            }
+
+            .slide li.left1 {
+                width: 400px;
+                top: 20px;
+                left: 50px;
+                opacity: 0.2;
+                z-index: 2;
+            }
+
+            .slide li.left2 {
+                width: 600px;
+                top: 70px;
+                left: 0px;
+                opacity: 0.8;
+                z-index: 3;
+            }
+
+            .slide li.middle {
+                width: 800px;
+                top: 100px;
+                left: 200px;
+                opacity: 1;
+                z-index: 4;
+            }
+
+            .slide li.right2 {
+                width: 600px;
+                top: 70px;
+                left: 600px;
+                opacity: 0.8;
+                z-index: 3;
+            }
+
+            .slide li.right1 {
+                width: 400px;
+                top: 20px;
+                left: 750px;
+                opacity: 0.2;
+                z-index: 2;
+            }
+        </style>
+    </head>
+    <body>
+        <!-- 旋转木马 -->
+        <div class="wrap" id="wrap">
+            <div class="slide" id="slide">
+                <ul>
+                    <li>
+                        <a href="#"
+                            ><img src="images1/slidepic1.jpg" alt=""
+                        /></a>
+                    </li>
+                    <li>
+                        <a href="#"
+                            ><img src="images1/slidepic2.jpg" alt=""
+                        /></a>
+                    </li>
+                    <li>
+                        <a href="#"
+                            ><img src="images1/slidepic3.jpg" alt=""
+                        /></a>
+                    </li>
+                    <li>
+                        <a href="#"
+                            ><img src="images1/slidepic4.jpg" alt=""
+                        /></a>
+                    </li>
+                    <li>
+                        <a href="#"
+                            ><img src="images1/slidepic5.jpg" alt=""
+                        /></a>
+                    </li>
+                </ul>
+                <div class="arrow" id="arrow">
+                    <a href="javascript:;" class="prev" id="arrLeft"></a>
+                    <a href="javascript:;" class="next" id="arrRight"></a>
+                </div>
+            </div>
+        </div>
+    </body>
+    <script>
+        let classNames = ["left1", "left2", "middle", "right2", "right1"];
+        window.onload = function() {
+            // let lis = document.querySelectorAll('.slide li');
+            let lis = document.querySelectorAll('#slide li');
+            let leftBtn = document.querySelector('#arrLeft');
+            let rightBtn = document.querySelector('#arrRight');
+
+            lis.forEach((e, i) => {
+                e.className = classNames[i];
+            });
+
+            // 向右按钮
+            rightBtn.onclick = function() {
+                // 调整数组结构
+                let first = classNames.shift;
+                classNames.push(first);
+                // 将调整好的类名数组,在重新赋值给li
+                lis.forEach((e, i) => {
+                    e.className = classNames[i];
+                });
+            };
+            /* 向右按钮草稿
+                12345 ->51234
+                但是这用是改变类名数组做的，
+                图片的对应的li也是没有变的
+                classNames = ["left1", "left2", "middle", "right2", "right1"] =>
+                classNames = ['left2', 'middle','right2', 'right1', "left1"]
+                从数组上来看，是首位取出放到了末位
+             */
+
+            //  向左按钮，和向右按钮是一样的
+            leftBtn.onclick = function() {
+                let last = classNames.pop;
+                classNames.unshift(last);
+
+                lis.forEach((e, i) => {
+                    e.className = classNames[i];
+                });
+            };
+        };
+    </script>
+</html>

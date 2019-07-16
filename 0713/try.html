@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>元奭</title>
+  </head>
+  <body>
+    <!-- 最长公共前缀 -->
+  </body>
+  <script>
+    /**
+     * @param {string[]} strs
+     * @return {string}
+     */
+    var longestCommonPrefix = function(strs) {
+      /* 
+        使用sort()对字符串数组进行排序，然后对比第一个和最后一个，不同就是不同了
+       */
+
+      strs = strs.sort();
+      console.log(strs);
+    };
+      // 这里没有返回值所以是undefined
+    console.log(longestCommonPrefix(["flower", "flow", "flight"]));
+  </script>
+</html>

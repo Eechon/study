@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>元奭</title>
+    <style>
+      body {
+        /* 不允许用户进行选取操作 */
+        user-select: none;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 阻止用户复制 -->
+    <div>
+      李狗蛋，今天很开心，因为它看到了他的女神翠花，翠花还对他笑了一下。
+    </div>
+  </body>
+  <script src="./jquery.js"></script>
+  <script>
+    /* 阻止右键菜单 */
+    $(document).on("contextmenu", e => {
+      e.preventDefault();
+    });
+
+    /* 阻止按下Ctrl+C */
+    $(document).on("keydown", e => {
+      // 判断是否同时按下了Ctrl和c
+      if (e.ctrlKey && e.keyCode === 67) {
+        e.preventDefault();
+        console.log("用户执行了复制操作");
+      }
+    });
+  </script>
+</html>
