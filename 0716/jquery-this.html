@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>元奭</title>
+  </head>
+  <body>
+    <!-- 自己封装JQuery中的this -->
+    <div class="box">1</div>
+    <div class="box">2</div>
+    <div class="box">3</div>
+    <div class="box">4</div>
+    <div class="box">5</div>
+  </body>
+  <script>
+    (function() {
+      function Init(selector) {
+        let dom = document.querySelectorAll(selector);
+        for (let i = 0; i < dom.length; i++) {
+          this[i] = dom[i];
+        }
+        this.length = dom.length;
+        // 这里的两个this都是指向Init实例对象
+        // console.log(this);
+      }
+
+      Init.prototype.each = function(callback) {
+        for (let i = 0; i < this.length; i++) {
+          // 这个this是指这个each实例对象的
+          console.log(this);
+          callback(i,this[i]);
+          // console.log(this);
+        }
+      };
+
+      Init.prototype.css = function(property, value) {
+        if (value != undefined) {
+          this.each(
+            function(i, e) {
+              this[i].style[property] = value;
+              console.log(this);
+            }.bind(this)
+          );
+        }
+      };
+
+      function jQuery(selector) {
+        return new Init(selector);
+      }
+
+      window.$ = jQuery;
+    })();
+
+    let box = $(".box");
+    // box.css("color", "red");
+    // box.each();
+    box.css("color", "red");
+  </script>
+</html>

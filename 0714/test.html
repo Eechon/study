@@ -1,25 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>元奭</title>
-  <style>
-    .a{
-      font-size: 100px;
-    }
-  </style>
-</head>
-<body>
-  <!-- 仿照JQuery自己封装功能 -->
-  <div class="box">1</div>
-  <div class="box">2</div>
-  <div class="box">3</div>
-</body>
-<script src="./jQuery.my.js"></script>
-<script>
-  let box = $(".box");
-  box.css("width",200);
-</script>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>元奭</title>
+    <style>
+      .a {
+        font-size: 100px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 仿照JQuery自己封装功能 -->
+    <div class="box">1</div>
+    <div class="box">2</div>
+    <div class="box">3</div>
+  </body>
+  <script src="./jQuery.my.js"></script>
+  <script>
+    let box = $(".box");
+
+    box.each(function(i, e) {
+      // console.log(i);
+      console.log(e);
+    });
+
+    // console.log(box);
+    box.css("width", 200);
+    box.css("height", 200);
+    box.css("backgroundColor", "red");
+    // box.css('width','200px');
+
+    // console.log(box.css('width'));
+    // console.log(box.css('height'));
+    // console.log(box.css('backgroundColor'));
+
+    box.addClass("a"); 
+    // box.removeClass("b");
+    // box.toggleClass("b");
+
+    // 字符串的indexOf方法
+    // console.log('abcdef'.indexOf('g'));
+  </script>
 </html>

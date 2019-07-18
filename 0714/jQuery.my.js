@@ -54,8 +54,17 @@
   /* 实现addclass功能 */
   Init.prototype.addClass =function(className){
     for(let i = 0;i<this.length;i++){
-      this[i].classList.add
+      this[i].classList.add(className);
     }
+    // 返回对象，用于链式编程
+    return this;
+  }
+
+  /**
+   * 封装移除类名的方法
+   */
+  Init.prototype.removeClass=function(){
+    this
   }
 
   //第一步，把封装的JQuery函数变成window的一个属性，让匿名函数外面也可以使用

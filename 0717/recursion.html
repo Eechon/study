@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>元奭</title>
+  </head>
+  <body>
+    <!-- 递归 -->
+  </body>
+  <script>
+    /**
+     * 递归写阶乘
+     */
+    function fn(n) {
+      if (n == 1) return 1;
+      return fn(n - 1) * n;
+    }
+
+    console.log(fn(5));
+
+    function rabbit(n) {
+      if (n == 1 || n == 2) {
+        return 1;
+      }
+      return rabbit(n - 1) + rabbit(n - 2);
+    }
+    console.log(rabbit(5));
+
+    testarr = [99, 55, 33, 44, 22, 88, 77, 66, 11];
+    function bubble(arr) {
+      // 写一个冒泡排序
+      // 思路是相互比较，每次循环都将最值排到最后
+      // 加上一个状态控制函数，如果这次循环，没有交换，就直接跳出
+      for (let i = 0; i < arr.length; i++) {
+        let flag = true; //每次外循环开始重置flag
+        for (let j = 0; j < arr.length - i; j++) {
+          // i控制外层循环，j控制内层循环
+          if (arr[j] > arr[j + 1]) {
+            let temp = arr[j];
+            arr[j] = arr[j + 1];
+            arr[j + 1] = temp;
+            flag = false;
+            // 如果flag是flase,那么就不直接退出
+          }
+        }
+        if (flag) {
+          return arr;
+        }
+        console.log(i);
+      }
+      return arr;
+    }
+    console.log(bubble(testarr));
+  </script>
+</html>
