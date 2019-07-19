@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>元奭</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      ul {
+        list-style: none;
+      }
+
+      .container {
+        width: 600px;
+        height: 400px;
+        border: 1px solid #000;
+        margin: 100px auto;
+      }
+      .nav::after,
+      .nav::before {
+        content: "";
+        clear: both;
+        display: block;
+      }
+      .nav li {
+        float: left;
+        width: 100px;
+        height: 60px;
+        text-align: center;
+        line-height: 60px;
+        border-bottom: 1px solid #000;
+        border-right: 1px solid #000;
+      }
+
+      .nav li.active {
+        background-color: hotpink;
+      }
+
+      .row {
+        border-top: 1px solid #000;
+      }
+      .row .content {
+        height: 338px;
+        background-color: green;
+        display: none;
+      }
+      .row .show {
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 使用封装对象的方法实现tab栏 -->
+    <div class="container">
+      <!-- 每个分类 -->
+      <ul class="nav">
+        <li class="active">影音</li>
+        <li>书籍</li>
+        <li>零食</li>
+      </ul>
+      <!-- 分类对应的多个内容 -->
+      <div class="row">
+        <div class="content show">影音的对应的内容</div>
+        <div class="content">书籍的对应的内容</div>
+        <div class="content">零食的对应的内容</div>
+      </div>
+    </div>
+  </body>
+  <script>
+    /* 
+      原来：1.获取元素，
+      2.遍历给每个li加上onmouseover，这个onmouseover的作用是遍历清除所有的active类，同时给点击的li加上active类
+      3.同时遍历content清除show类，并且给当前li对应的content加上show类；
+
+      现在封装成对象了，就是看对象需要什么constructor，需要什么方法
+      constructor：
+      li的选择器
+      content的选择器
+      事件的类型
+      active的类名
+      show的类名
+      function：
+      添加事件addEvent()
+    */
+    class Tab {
+      constructor(options) {
+        // 传入的值设置成一个对象，这样就可以轻松选择传参数或者不传参数了，
+        // 像之前用的框架别人封装的函数，都是有可选择传与不传的参数
+        // 且不用固定传参数的顺序
+        options = options || {}; // 表示默认是一个对象，如果不传参数就是这样子{}
+        this.navSelector = options.navSelector || ".nav >li";
+        this.contentSelector = options.contentSelector || ".content";
+        this.type = options.type || "mouseover";
+        this.navClass = options.navClass || "active";
+        this.contentClass = options.contentClass || "show";
+      } /* end constructor */
+      addEvent() {
+        /* 
+          这个方法才是做事情的东西，就是之前做的tab栏切换
+          1.根据传参数获取元素
+          2.根据传参数遍历所有li加上对应事件，
+          3.事件触发之后，遍历所有li清除对应的class，并给目标li加上对应class
+          4.同时遍历所有content清除对应的class，并给与目标li对应的content加上相应class；
+        */
+        let _this = this; //让foreach里面也可以用指向传进来的这个对象的属性；
+        let lis = document.querySelectorAll(this.navSelector);
+        let contents = document.querySelectorAll(this.contentSelector);
+        lis.forEach((e, i) => {
+          e.addEventListener(this.type, function() {
+            lis.forEach(e => {
+              e.classList.remove(_this.navClass);
+              //这里本身的this，指向的应该是window
+              //经过验证this指向的是对应的li标签
+              console.log(this);//指向对应的li标签
+              console.log(_this.navClass);//指向对象的navClass，即red
+              console.log(this.navClass);//undefined
+              // _this指向创建的对象没跑，现在是为什么this不指向了呢
+              /* 
+                首先lis是li的伪数组，foreach传进来的e是指向每一个li，e的事件监听就是li的事件监听，
+                事件监听里面的this指向就是e.就是li，
+               */
+            }); /* end lis.foreach */
+            this.classList.add(_this.navClass);
+          }); /* end addEventListener */
+        }); /* end lis.forEach */
+      } /* end addEvent */
+    } /* end Tab */
+
+    // 测试
+    let tab = new Tab({
+      navClass: "red"
+    });
+    tab.addEvent();
+  </script>
+</html>
