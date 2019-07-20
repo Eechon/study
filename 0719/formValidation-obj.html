@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>元奭</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+
+      input {
+        outline: none;
+        border: 1px solid #333;
+      }
+
+      .form {
+        width: 400px;
+        margin: 100px auto;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+
+      .row {
+        display: flex;
+      }
+
+      .cell {
+        padding: 0 10px;
+        line-height: 55px;
+      }
+
+      .f2 {
+        flex: 2;
+      }
+
+      .f3 {
+        flex: 3;
+      }
+
+      .control {
+        display: inline-block;
+        width: 100%;
+        height: 34px;
+        padding: 6px 12px;
+        border-radius: 4px;
+        border: 1px solid #ccc;
+        box-sizing: border-box;
+        vertical-align: middle;
+      }
+
+      .btn {
+        display: inline-block;
+        padding: 6px 12px;
+        margin-bottom: 0;
+        text-align: center;
+        white-space: nowrap;
+        vertical-align: middle;
+        border: 1px solid transparent;
+        border-radius: 4px;
+        color: #333;
+        background-color: #fff;
+        border-color: #ccc;
+        vertical-align: middle;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 表单验证-对象实现 -->
+    <div class="form">
+      <form action="" id="registerForm" method="get">
+        <div class="row">
+          <div class="cell f2">请输入用户名：</div>
+          <div class="cell f3">
+            <input type="text" class="control" name="userName" />
+          </div>
+        </div>
+        <div class="row">
+          <div class="cell f2">请输入密码：</div>
+          <div class="cell f3">
+            <input type="text" class="control" name="password" />
+          </div>
+        </div>
+        <div class="row">
+          <div class="cell f2">请输入手机号码：</div>
+          <div class="cell f3">
+            <input type="text" class="control" name="phoneNumber" />
+          </div>
+        </div>
+        <br />
+        <div class="row">
+          <div class="cell f2"></div>
+          <div class="cell f3">
+            <input type="submit" class="btn" value="提交" />
+          </div>
+        </div>
+      </form>
+    </div>
+  </body>
+  <script>
+    // 阶段一:将判断封装成函数
+    // 这样preventDefault后面直接调用函数就可以了
+
+    // 阶段三：我现在不但要用户名的验证，还要密码的验证，两个验证又有重复的地方，合并
+    // 合并需要靠传入的参数是密码还是用户用，来分别处理
+
+    /* 对象阶段：
+      把验证函数包装到对象中，想用哪个验证就用哪个
+      老师的意思是，同时把添加验证函数和调用验证函数的过程，封装成对象
+
+     */
+
+    let form = document.querySelector("#registerForm");
+
+    //  strategies - 策略
+    // 使用一个对象，保证所有的验证策略
+    let strategies = {
+      // 这里封装成了属性，键值对的方式
+      isNonEmpty: function(value, errMsg) {
+        if (value === "") {
+          return errMsg;
+        }
+      } /* end isNonEmpty */,
+      minLength: function(value, length, errMsg) {
+        if (value.length < length) {
+          return errMsg;
+        }
+      } /* end minLength */
+    }; /* end strategies */
+
+    // 对线阶段：把下面的验证方法都包装到对象中。并称之为策略
+    // let isNonEmpty = function(value, errMsg) {
+    //   if (value === "") {
+    //     return errMsg;
+    //   }
+    // };
+
+    // let minLength = function(value, length, errMsg) {
+    //   if (value.length < length) {
+    //     return errMsg;
+    //   }
+    // };
+
+    // 创建一个对象构造函数
+    function validator() {
+      // validateFuncss 属性是一个数组，存放验证方法的函数数组
+      this.validateFuncs = [];
+    }
+    // 添加add方法：添加验证控件和验证规则
+    Validator.prototype.add = function(dom, rules) {
+      for (let i = 0; i < rules.length; i++) {
+        let rule = rules[i];
+        let fn = function() {
+          let funName = rule.validateFunName;
+          // 返回一个完整的函数
+          return strategies[funName](dom.value, rule.errMsg);
+        };
+        // 给这个对象添加验证方法
+        this.validateFuncs.push(fn);
+      }
+    };
+
+    // 验证，把函数数组中的验证方法每个调用一次，不通过的给对应的错误提示
+    Validator.prototype.start = function(){
+      for(let i = 0; i<this.validateFuncs.length;i++){
+
+      }
+    }
+
+    // 阶段二:调用函数部分相似,直接把调用函数的代码和并成一个,然后函数放到数组,依次调用
+    // 阶段三：现在用户名和密码的合并，需要传参了，但是传参的数量不一样啊，使用匿名函数数组，调用的使用统一格式，匿名函数时再传递参数
+    let validateFuncs = [
+      function() {
+        return isNonEmpty(form.userName.value, "用户名不能为空");
+      },
+      function() {
+        return minLength(form.userName.value, 8, "用户名长度不能小于8");
+      },
+      function() {
+        return isNonEmpty(form.password.value, "密码不能为空");
+      },
+      function() {
+        return minLength(form.password.value, 6, "密码长度不能小于6");
+      }
+    ];
+
+    function validate() {
+      // 循环调用数组内函数
+      for (let i = 0; i < validateFuncs.length; i++) {
+        let errMsg = validateFuncs[i](); //函数数组，
+        // errMsg 要么是undefined，要么是错误信息
+        if (errMsg) {
+          return errMsg;
+        }
+      }
+    }
+
+    let form = document.querySelector("#registerForm");
+    // 只要表单控件带有name属性，可以直接使用表单对象，点name属性的方式获取表单控件
+    let btn = document.querySelector(".btn");
+    btn.onclick = function(e) {
+      // 下边的调用函数部分相似，和并;errMsg的值直接调用验证函数就行了,
+      let errMsg = validate();
+      if (errMsg) {
+        e.preventDefault();
+        alert(errMsg);
+      }
+    };
+  </script>
+</html>

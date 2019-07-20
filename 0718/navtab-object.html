@@ -39,6 +39,9 @@
       .nav li.active {
         background-color: hotpink;
       }
+      .nav li.red {
+        background-color: red;
+      }
 
       .row {
         border-top: 1px solid #000;
@@ -115,15 +118,17 @@
               e.classList.remove(_this.navClass);
               //这里本身的this，指向的应该是window
               //经过验证this指向的是对应的li标签
-              console.log(this);//指向对应的li标签
-              console.log(_this.navClass);//指向对象的navClass，即red
-              console.log(this.navClass);//undefined
+              // console.log(this);//指向对应的li标签
+              // console.log(_this.navClass);//指向对象的navClass，即red
+              // console.log(this.navClass);//undefined
               // _this指向创建的对象没跑，现在是为什么this不指向了呢
               /* 
                 首先lis是li的伪数组，foreach传进来的e是指向每一个li，e的事件监听就是li的事件监听，
                 事件监听里面的this指向就是e.就是li，
                */
             }); /* end lis.foreach */
+            console.log(this);
+            console.log(e);
             this.classList.add(_this.navClass);
           }); /* end addEventListener */
         }); /* end lis.forEach */
