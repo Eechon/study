@@ -75,10 +75,37 @@
       开始载入的时候获取默认的元素
      */
     let xhr = new XMLHttpRequest();
-    xhr.open("get","http://127.0.0.1:8080/getArticle");
+    xhr.open("get", "http://127.0.0.1:8080/getArticle");
     xhr.send();
-    
+    xhr.onreadystatechange = () => {
+      if (xhr.readyState === 4 && xhr.status === 200) {
+        let res = JSON.parse(xhr.responseText);
+        res.data.forEach(element => {
+          $("<li>")
+            .html(element.content)
+            .appendTo($(".content"));
+        }); /* end forEach */
+      }
+    };
 
+    $("#filter").on("input", function() {
+      let value = $(this).val();
+      let xhr = new XMLHttpRequest();
+      xhr.open("get", "http://127.0.0.1:8080/getSearchArticle?search=" + value);
+      xhr.send();
+
+      xhr.onreadystatechange = () => {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+          let res = JSON.parse(xhr.responseText);
+          $(".content").html("");
+          res.data.forEach(element => {
+            $("<li>")
+              .html(element.content)
+              .appendTo($(".content"));
+          });
+        }
+      };
+    });
 
     /* 
       根据输入内容获取文章

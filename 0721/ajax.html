@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>元奭</title>
+  </head>
+  <body>
+    <!-- 封装ajax -->
+  </body>
+  <script>
+    /*
+      变量：1.发送方式，2.发送地址，3.发送的数据,4.数据的处理方式
+    */
+    function ajax(type, url, data, callback) {
+      let xhr = new XMLHttpRequest();
+      // 如果是get请求，则数据要拼接到url的后面
+      if (type === "get") {
+        url += "?" + data;
+      }
+      xhr.open(type, url);
+      // 如果是post请求，把数据放在send里面，同时前面还需要设置请求头
+      if (type === "post") {
+        xhr.setRequestHeader(
+          "Content-Type",
+          "application/x-www-form-urlencoded"
+        );
+        xhr.send(data);
+      } else {
+        xhr.send();
+      }
+
+      xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4) {
+          if (xhr.status === 200) {
+            callback(xhr.responseText);
+          }
+        }
+      };
+    } /* end ajax */
+
+    //  ajax(type, url, data, callback)
+    ajax(
+      "get",
+      "http://127.0.0.1:8080/isUserNameExist",
+      "userName=123456",
+      function(res) {
+        console.log(res);
+        console.log(1234);
+      }
+    );
+    ajax(
+      "post",
+      "http://127.0.0.1:8080/doLogin",
+      "userName=ligoudan&password=123456",
+      function(res) {
+        console.log(res);
+      }
+    );
+    /* 这样分装十分麻烦，需要写的东西太多了，将传递的参数变成一个对象 */
+  </script>
+</html>

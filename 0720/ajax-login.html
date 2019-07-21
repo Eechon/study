@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>元奭</title>
+    <style>
+      form {
+        padding-top: 100px;
+        padding-left: 100px;
+      }
+
+      form > div {
+        margin-bottom: 15px;
+      }
+
+      input {
+        height: 32px;
+        border: none;
+        width: 500px;
+        box-shadow: 0 0 0 1px #e7e7e7 inset;
+        text-indent: 8px;
+      }
+
+      .login,
+      .register {
+        display: inline-block;
+        width: 120px;
+        line-height: 40px;
+        border-radius: 6px;
+        background-color: dodgerblue;
+        color: #fff;
+        font-size: 16px;
+        text-align: center;
+        cursor: pointer;
+        margin-top: 20px;
+        text-decoration: none;
+      }
+
+      .login:hover,
+      .register:hover {
+        background-color: deepskyblue;
+      }
+
+      .login {
+        margin-right: 15px;
+        margin-left: 80px;
+      }
+
+      #toast {
+        position: fixed;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        z-index: 9;
+      }
+
+      #toast span {
+        padding: 8px 15px;
+        background-color: rgba(0, 0, 0, 0.7);
+        color: #fff;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        border-radius: 4px;
+        -webkit-user-select: none;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- ajax 实现登录 -->
+    <form>
+      <div class="name">
+        用&ensp;户&ensp;名：<input
+          class=""
+          type="text"
+          placeholder="请输入用户名"
+          name="name"
+        />
+      </div>
+
+      <div class="pwd">
+        密&emsp;&emsp;码：<input
+          type="password"
+          placeholder="请输入密码"
+          name="pwd"
+        />
+      </div>
+
+      <div class="login">登录</div>
+      <a class="register" href="./register.html">注册</a>
+    </form>
+  </body>
+  <script src="../js/jquery.js"></script>
+  <script src="./extend.js"></script>
+  <script>
+    /*
+      实现登录
+      1.
+    */
+    $(".login").on("click", function() {
+      if (!$(".name input").val() || !$(".pwd input").val()) {
+        $.fn.toast("请输入用户名和密码！");
+      } else {
+        let xhr = new XMLHttpRequest();
+        xhr.open("post", "http://127.0.0.1:8080/doLogin");
+        xhr.setRequestHeader(
+          "Content-type",
+          "application/x-www-form-urlencoded"
+        );
+        let params = serialize($("form"));
+        xhr.send(params);
+        xhr.onreadystatechange = function() {
+          if (xhr.readyState === 4 && xhr.status === 200) {
+            var res = JSON.parse(xhr.responseText);
+            alert(res.msg);
+          }
+        };
+      }
+    }); /* end click */
+    /* 
+      这里的疑惑的是，是怎么校对数据合不合适的，只看到了判断密码和用户名为不为空
+     */
+  </script>
+</html>

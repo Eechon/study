@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>元奭</title>
+  </head>
+  <body>
+    <!-- ajax使用对象传参数 -->
+  </body>
+  <script>
+    /* 
+      // 直接封装成一个对象ajax
+      这个鸡儿好像不是对象啊，还是一个函数，但是传递的参数是对象
+      传入的参数设置成一个对象，需要4个属性type,url,data,callback
+    */
+    function ajax(options) {
+      options = options || {};
+      options.type = options.type || "get";
+      options.url = options.url || "";
+      options.callback =
+        options.callback ||
+        function(res) {
+          console.log("没有设置回调函数，不建议这样做");
+          console.log(res);
+        };
+
+      let xhr = new XMLHttpRequest();
+      // 如果是get请求，则数据要拼接到url的后面
+      if (options.type === "get") {
+        options.url += "?" + options.data;
+      }
+      xhr.open(options.type, options.url);
+      // 如果是post请求，把数据放在send里面，同时前面还需要设置请求头
+      if (options.type === "post") {
+        xhr.setRequestHeader(
+          "Content-Type",
+          "application/x-www-form-urlencoded"
+        );
+        xhr.send(options.data);
+      } else {
+        xhr.send();
+      }
+
+      xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4) {
+          if (xhr.status === 200) {
+            options.callback(xhr.responseText);
+          }
+        }
+      };
+    } /* end ajax */
+    ajax({
+      url: "http://127.0.0.1:8080/getCodeWithoutPhone",
+      callback: function(res) {
+        console.log(res);
+        console.log("这是测试回调");
+      }
+    });
+  </script>
+</html>

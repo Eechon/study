@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>元奭</title>
+    <style>
+      form {
+        padding-top: 100px;
+        padding-left: 100px;
+      }
+
+      form > * {
+        margin-bottom: 15px;
+        position: relative;
+      }
+
+      form-item input {
+        height: 32px;
+        border: none;
+        width: 500px;
+        box-shadow: 0 0 0 1px #e7e7e7 inset;
+        text-indent: 8px;
+      }
+
+      .pre_register,
+      .register {
+        display: inline-block;
+        width: 120px;
+        line-height: 40px;
+        border-radius: 6px;
+        color: #fff;
+        font-size: 16px;
+        text-align: center;
+        cursor: pointer;
+        margin-top: 20px;
+        text-decoration: none;
+        margin-left: 100px;
+      }
+
+      .register {
+        background-color: dodgerblue;
+        border: none;
+        outline: none;
+      }
+
+      .register:hover {
+        background-color: deepskyblue;
+      }
+
+      .disable {
+        background-color: #666;
+      }
+
+      .error::after {
+        position: absolute;
+        top: 50%;
+        transform: translate(8px, -50%);
+        color: rgb(224, 51, 51);
+        content: attr(data-error);
+      }
+
+      .correct::after {
+        position: absolute;
+        top: 50%;
+        transform: translate(8px, -50%);
+        color: rgb(95, 238, 95);
+        content: attr(data-correct);
+      }
+
+      form-item {
+        display: block;
+      }
+
+      #toast {
+        position: fixed;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        z-index: 9;
+      }
+
+      #toast span {
+        padding: 8px 15px;
+        background-color: rgba(0, 0, 0, 0.7);
+        color: #fff;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        border-radius: 4px;
+        -webkit-user-select: none;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- ajax实现注册 -->
+    <form>
+      <form-item class="name">
+        用&ensp;户&ensp;名：<input
+          type="text"
+          placeholder="请输入用户名"
+          name="name"
+          required="true"
+        />
+      </form-item>
+
+      <form-item class="pwd">
+        密&emsp;&emsp;码：<input
+          type="password"
+          placeholder="请输入密码"
+          name="pwd"
+          required="true"
+        />
+      </form-item>
+
+      <form-item class="repwd">
+        确认密码：<input
+          type="password"
+          placeholder="请输入密码"
+          required="true"
+        />
+      </form-item>
+
+      <input type="submit" class="register" value="注册" />
+    </form>
+  </body>
+  <script src="../js/jquery.js"></script>
+  <script src="./extend.js"></script>
+  <script>
+    /* 
+      实现注册
+      1.验证用户名
+        a.用户名为空
+        b.验证用户名是否重复
+      2.验证密码两次是否一致
+      3.提交注册
+     */
+    $(".name input").on("blur", function() {
+      if (!$(this).val()) {
+        // 用户名为空的时候，什么都不干
+        return;
+      }
+      let xhr = new XMLHttpRequest();
+      xhr.open(
+        "get",
+        "http://127.0.0.1:8080/isUserNameExist?name=" + $(this).val()
+      );
+      xhr.send();
+      xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+          let res = JSON.parse(xhr.responseText);
+          if (res.code === 200) {
+          } else {
+            $(".name").getError(res.msg);
+            // 当是200 的时候说明用户名可以用，然后不是200的时候，说名不可用
+          }
+        }
+      };
+    }); /* end blur */
+
+    // 验证密码框
+    $(".repwd input").on("blur", () => {
+      let pwdData = $(".pwd input").val();
+      let rePwdData = $(this).val();
+      if (pwdData !== rePwdData) {
+        $(".repwd").getError("两次密码不一致");
+      } else {
+        $(".repwd").getCorrect("两次密码一致");
+      }
+    }); /* end blur */
+
+    // 提交验证
+    $("form").on("submit", () => {
+      window.event.preventDefault();
+      // checkForm检测表单是否有错误存在，有返回false，没有返回true
+      if (!$(this).checkForm()) {
+        // 弹出小黑框
+        $.fn.toast("请确保表单内容正确！");
+      } else {
+        let xhr = new XMLHttpRequest();
+        xhr.open("post", "http://127.0.0.1:8080/doRegister");
+        // post传递方式需要设置请求头
+        xhr.setRequestHeader(
+          "Content-type",
+          "application/x-www-form-urlencoded"
+        );
+        let params = serialize($("form"));
+        xhr.send(params);
+        xhr.onreadystatechange = () => {
+          if (xhr.readyState === 4 && xhr.status === 200) {
+            let res = JSON.parse(xhr.responseText);
+            $.fn.toast(res.msg);
+          }
+        };
+      }
+    }); /* end submit  */
+  </script>
+</html>
