@@ -19,6 +19,7 @@
       options = options || {};
       options.type = options.type || "get";
       options.url = options.url || "";
+      options.data = options.data || "";
       options.callback =
         options.callback ||
         function(res) {
@@ -51,12 +52,28 @@
         }
       };
     } /* end ajax */
+
+    // 测试
     ajax({
-      url: "http://127.0.0.1:8080/getCodeWithoutPhone",
+      data: "userName=123",
       callback: function(res) {
         console.log(res);
-        console.log("这是测试回调");
-      }
+      },
+      type: "get",
+      url: "http://127.0.0.1:8080/isUserNameExist"
     });
+
+    // ajax({
+    //   url: "http://127.0.0.1:8080/isUserNameExist",
+    //   data: "userName=123"
+    // });
+
+    // ajax({
+    //   url: "http://127.0.0.1:8080/getCodeWithoutPhone",
+    //   callback: function(res) {
+    //     console.log(res);
+    //     console.log("这是测试回调");
+    //   }
+    // });
   </script>
 </html>

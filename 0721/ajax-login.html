@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>元奭</title>
+  </head>
+  <body>
+    <!-- 实现登录 -->
+  </body>
+  <script src="../js/jquery.js"></script>
+  <script src="./ajax.js"></script>
+  <script>
+    /*
+
+    */
+    //  注册点击登录
+    $("#login-btn").on("click", function() {
+      // 判断用户名
+      // 获取用户名内数据
+      let userName = $("#userName").val();
+      // trum()把前后空格去掉，
+      if (userName.trim().length === 0) {
+        alert("用户名不能为空");
+        return;
+      }
+      // 判断密码 未写
+
+      // serialize()能通过form表单中的name获取对应的键值对
+      let data = $("form").serialize();
+      ajax({
+        type: "post",
+        url: "http://127.0.0.1:8080/doLogin",
+        data: data,
+        callback: function(res) {
+          res = JSON.parse(res);
+          if (res.code === 200) {
+            alert("登录成功");
+            location.href = "./index.html";
+          } else {
+            alert(res.msg);
+          }
+        }
+      });
+    }); /* end click */
+  </script>
+</html>
