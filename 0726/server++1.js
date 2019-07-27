@@ -14,6 +14,7 @@ server.on("request", (req, res) => {
     }
     // console.log("./0726" + req.url);
     fs.readFile("./0726" + req.url, (err, data) => {
+      // 是什么就去什么地方拿,不用再分开获取图片js等了
       if (err) throw err;
       res.end(data);
     });
