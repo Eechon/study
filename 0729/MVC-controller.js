@@ -20,7 +20,8 @@ let controller = {
       res.end(data);
     });
   },
-  getIndexHtml: function() {
+  getIndexHtml: function(req, res) {
+    // console.log("controller");
     // 主页，获取英雄就行了
     model.getAllHero(function(array) {
       // 获取英雄数据之后，导入模版中，服务器端渲染页面

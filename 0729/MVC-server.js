@@ -10,12 +10,13 @@ const http = require("http");
 const server = http.createServer();
 
 // 引入router路由层
-const router = require("./MVC-router");
+const router = require("./MVC-router.js");
 
 server.listen(8080, () => {
   console.log("http://127.0.0.1:8080");
 });
 
-server.on("require", (req, res) => {
-  rooter(req, res);
+server.on("request", (req, res) => {
+  // console.log("server");
+  router(req, res);
 }); /* end require */
