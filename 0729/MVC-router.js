@@ -11,11 +11,13 @@ let router = function(req, res) {
   if (req.url.startsWith("/assets")) {
     controller.staticResource(req, res);
   } else if (req.url === "/views/add.html") {
+    console.log("router-getAddHtml");
     controller.getAddHtml(req, res);
   } else if (req.url === "/views/index.html") {
     // console.log("router");
     controller.getIndexHtml(req, res);
   } else if (req.url === "/addNewHero" && req.method === "POST") {
+    console.log("router-addNewHero");
     controller.addNewHero(req, res);
   }
 };

@@ -30,6 +30,7 @@ let controller = {
     });
   },
   getAddHtml: function(req, res) {
+    console.log("controller-getAddHtml");
     fs.readFile("./views/add.html", (err, data) => {
       /* 如果是add.html ，这个页面是没有动态数据的，所以直接读取就好了 */
       if (err) console.log(err);
@@ -37,6 +38,7 @@ let controller = {
     });
   },
   addNewHero: function(req, res) {
+    console.log("controller-addNewHero");
     // post传输数据是一块一块传输的，所以需要和并到一起
     let data = "";
     req.on("data", chunck => {
