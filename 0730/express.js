@@ -1,4 +1,5 @@
 const express = require("express");
+const fs = require("fs");
 const app = express();
 app.listen(8080, () => {
   console.log("服务器已经启动，express");
@@ -24,7 +25,9 @@ app.use("/assets", express.static("assets"));
 
 // EJS 作为模版引擎
 app.set("view engine", "ejs");
-app.get("/ejs",())
+app.get("/ejs", (req, res) => {
+  res.render("test", { name: "狗蛋", age: 12, gender: "男", id: 10086 });
+});
 
 app.get("/", (req, res) => {
   res.send("hello,world");
