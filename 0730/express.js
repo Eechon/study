@@ -15,6 +15,17 @@ app.use("/views", express.static("views"));
 app.use("/assets", express.static("assets"));
 // 其实这两个方法是一样的，因为前面的参数是可选的
 
+// app.set("view engine", "pug");
+
+// // 监听获取index页面请求
+// app.get("/test.html", (req, res) => {
+//   res.render("test", { title: "Hey", message: "Hello there!" });
+// });
+
+// EJS 作为模版引擎
+app.set("view engine", "ejs");
+app.get("/ejs",())
+
 app.get("/", (req, res) => {
   res.send("hello,world");
   /* 
