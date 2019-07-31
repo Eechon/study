@@ -23,4 +23,19 @@ router.get("/index", (req, res) => {
   controller.getIndex(req, res);
 });
 
+// 添加页面
+router.get("/add", (req, res) => {
+  controller.getAdd(req, res);
+});
+
+// 删除
+router.get("/deleteHeroById", (req, res) => {
+  controller.deleteHeroById(req, res);
+});
+
+// router.post(监听地址,处理程序);
+router.post("/addNewHero", (req, res) => {
+  controller.addNewHero(req, res);
+});
+
 module.exports = router;

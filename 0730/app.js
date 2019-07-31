@@ -8,6 +8,10 @@ const express = require("express");
 // const fs = require("fs");
 // 引入路由层
 const router = require("./router");
+
+// 引入body-parser中间件
+const bodyParser = require("body-parser");
+
 const app = express();
 
 app.listen(8080, () => {
@@ -26,6 +30,15 @@ app.set("view engine", "ejs");
 //     res.render("index", { arr });
 //   });
 // });
+
+// 注册body-parser中间件，
+app.use(bodyParser.urlencoded({ extended: false }));
+/**
+ * bodyParser是一个对象
+ * 对象方法：urlencoded - 表示要解析的是url编码。即健=值的形式
+ * extended - 依赖于插件
+ *
+ */
 
 // 注册中间件
 app.use(router);
