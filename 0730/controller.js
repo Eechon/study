@@ -27,10 +27,18 @@ let controller = {
   },
   getAdd(req, res) {
     // made还能给模版引擎读？这是没有变量的普通页面
+    // 先前在网上查的时候，有看到render和send的异同，当时不了解，现在看到了
     res.render("add");
   },
   addNewHero(req, res) {
-    model 
+    model.getAllHero(arr => {
+      model.getMaxId(maxId => {
+        req.body.id = maxId + 1;
+        arr.push(req.body);
+        model.writeFile(arr);
+        res.send({ code: 200, msg: "成功" });
+      });
+    });
   }
 };
 
