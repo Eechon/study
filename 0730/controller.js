@@ -14,6 +14,10 @@ let controller = {
       res.render("index", { arr });
     });
   },
+  getHeroById(req,res){
+    let id = req.query.di;
+    
+  },
   deleteHeroById(req, res) {
     let id = req.query.id;
     model.getAllHero(arr => {
@@ -28,6 +32,9 @@ let controller = {
   getAdd(req, res) {
     // made还能给模版引擎读？这是没有变量的普通页面
     // 先前在网上查的时候，有看到render和send的异同，当时不了解，现在看到了
+    res.render("add");
+  },
+  getEdit(req, res) {
     res.render("add");
   },
   addNewHero(req, res) {
