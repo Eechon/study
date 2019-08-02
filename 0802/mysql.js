@@ -17,7 +17,8 @@ let conn = mysql.createConnection({
 // 开始连接。但是一般现在的版本都是默认自动做了这一步
 conn.connect();
 
-let sql = "select * from heros";
+// let sql = "select * from heros";
+let sql = `UPDATE heros SET isDelete = 1 WHERE id = 4`;
 
 conn.query(sql, (err, result, filed) => {
   if (err) console.log(err);
@@ -25,5 +26,5 @@ conn.query(sql, (err, result, filed) => {
   console.log(filed);
 }); /* end query */
 
-// 关闭连接
+// 关闭连接，新版也是自动关闭连接的，
 conn.end();
